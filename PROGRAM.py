@@ -1,8 +1,6 @@
-
-import GPy
 import numpy as np
 import matplotlib.pyplot as plt
-
+import GPy
 
 #np.random.seed(42)
 
@@ -12,21 +10,24 @@ data = np.loadtxt('datafile.dat')
 X = data[:,0].reshape(-1,1)
 Y = data[:,1].reshape(-1,1)
 Y_imag = data[:,2].reshape(-1,1)
-
-
+Y_deriv_scaled_old = data[:,3].reshape(-1,1)
+Y_imag_deriv_scaled_old = data[:,4].reshape(-1,1)
+Y_deriv_old = data[:,5].reshape(-1,1)
+Y_imag_deriv_old = data[:,6].reshape(-1,1)
+velocity_old = data[:,7].reshape(-1,1)
 
 #kernel = GPy.kern.RBF(input_dim=1, variance=1, lengthscale=1)
-kernel = GPy.kern.RBF(input_dim=1, variance=np.random.uniform(0.1, 10), lengthscale=np.random.uniform(0.1, 10))
+kernel = GPy.kern.RBF(input_dim=1, variance=np.random.uniform(0.5, 4), lengthscale=np.random.uniform(0.5, 4))
 
-kernel_imag = GPy.kern.RBF(input_dim=1, variance=np.random.uniform(0.1, 10), lengthscale=np.random.uniform(0.1, 10))
+kernel_imag = GPy.kern.RBF(input_dim=1, variance=np.random.uniform(0.5, 4), lengthscale=np.random.uniform(0.5, 4))
 #kernel_imag = GPy.kern.RBF(input_dim=1, variance=1, lengthscale=1)
 #kernel = GPy.kern.Matern32(1)
 
 
-#kernel_imag.variance.set_prior(GPy.priors.Gamma(2., 0.5))  # Example, set prior explicitly
-#kernel_imag.lengthscale.set_prior(GPy.priors.Gamma(2., 0.5))
-#kernel.variance.set_prior(GPy.priors.Gamma(2., 0.5))  # Example, set prior explicitly
-#kernel.lengthscale.set_prior(GPy.priors.Gamma(2., 0.5))
+kernel_imag.variance.set_prior(GPy.priors.Gamma(2., 0.5))  # Example, set prior explicitly
+kernel_imag.lengthscale.set_prior(GPy.priors.Gamma(2., 0.5))
+kernel.variance.set_prior(GPy.priors.Gamma(2., 0.5))  # Example, set prior explicitly
+kernel.lengthscale.set_prior(GPy.priors.Gamma(2., 0.5))
 ##print("Initial kernel parameters:", kernel)
 
 X_mean_old = np.mean(X)
@@ -35,7 +36,6 @@ Y_imag_mean_old = np.mean(Y_imag)
 X_std_old = np.std(X)
 Y_std_old = np.std(Y)
 Y_imag_std_old = np.std(Y_imag)
-print("Initial kernel parameters:", X,Y,Y_imag,Y_std_old, Y_imag_std_old)
 
 
 X_old=X
@@ -55,7 +55,7 @@ Y_imag = (Y_imag - np.mean(Y_imag)) / np.std(Y_imag)
 
 #Z = np.linspace(min(X), max(X), 3).reshape(-1, 1)
 m = GPy.models.GPRegression(X,Y,kernel)
-m.Gaussian_noise.variance.fix(0.000000)
+m.Gaussian_noise.variance.fix(0.0)
 
 #m = GPy.models.SparseGPRegression(X, Y, kernel, Z=Z)
 #m.Gaussian_noise.constrain_positive()
@@ -77,9 +77,23 @@ from IPython.display import display
 m.optimize_restarts(messages=False, max_iters=1000, optimizer='bfgs', num_restarts=40)
 display(m)
 fig = m.plot()
+print("Noise variance:", m.Gaussian_noise.variance.values)
 plt.show()
 #
+x_min = np.min(X)
+x_max = np.max(X)
 
+
+new_points = np.linspace(x_min, x_max, 1000).reshape(-1, 1)
+samples = m.posterior_samples_f(new_points, size=5)  # Draw 3 sample functions
+for i in range(samples.shape[2]):  # Iterate over 3 samples
+    plt.plot(new_points, samples[:, 0, i], label=f"Sample {i+1}")
+
+plt.scatter(X, Y, color='red', label="Training Points")  # Plot training points
+plt.legend()
+plt.show()
+
+#samples = samples.squeeze(axis=1)  # Now samples.shape becomes (2, 3)
 
 
 m_imag = GPy.models.GPRegression(X,Y_imag,kernel_imag)
@@ -93,30 +107,11 @@ display(m_imag)
 #
 #
 fig = m_imag.plot()
+print("Noise variance:", m_imag.Gaussian_noise.variance.values)
 plt.show()
 #
 
 ####EXTRACING THE VALUE OF ENERGY FOR A GIVEN VALUE OF ETA
-
-# Define new input point x*
-#X_new = np.linspace(1.2e-3, 1.85e-3, 100)   # Example new input
-# Normalize new input
-#X_new_norm = (X_new - X_mean_old) / X_std_old
-#X_new_norm = X_new_norm.reshape(-1, 1)
-# Predict normalized output
-#Y_new_norm, Y_new_var_norm = m.predict(X_new_norm)
-
-# Denormalize output
-#Y_new = Y_new_norm * Y_std_old + Y_mean_old
-
-#for x in np.linspace(1.2e-3, 1.85e-3, 100):
-#  print(x)
-#print("Predicted y:", Y_new)
-
-#plt.plot(X_new, Y_new)
-#plt.scatter(X_old, Y_old,marker='v')
-#plt.show()
-
 #### CALCULATING THE DERIVATIVE OF THE SUUROGATE MODEL
 
 K = kernel.K(X,X)
@@ -177,12 +172,6 @@ def gp_surrogate_covariance(x_star):
     return yy.flatten()
 
 
-
-
-
-
-
-
 def gp_surrogate_model_imag(x_star):
 
     x_star = np.atleast_1d(x_star)
@@ -229,38 +218,28 @@ def gp_surrogate_covariance_imag(x_star):
     return yy_imag.flatten()
 
 
+# Create an array of 100 evenly spaced points between x_min and x_max
 
-
+#X_test = np.linspace(1.2e-3, 1.85e-3, 100).reshape(-1,1)
 
 x_min = np.min(X_old)
 x_max = np.max(X_old)
 
-# Create an array of 100 evenly spaced points between x_min and x_max
-new_points = np.linspace(x_min, x_max, 500).reshape(-1, 1)
-#new_points = X_old
 
-#X_test = np.linspace(1.2e-3, 1.85e-3, 100).reshape(-1,1)
-#print(X_test)
+new_points = np.linspace(x_min, x_max, 1000).reshape(-1, 1)
+
 Y_list = np.array([gp_surrogate_model(x.reshape(1, 1)) for x in new_points]).flatten()
-print(Y_list)
 Y_list_imag = np.array([gp_surrogate_model_imag(x.reshape(1, 1)) for x in new_points]).flatten()
-print(Y_list_imag)
-
+Y_list_training = np.array([gp_surrogate_model(x.reshape(1, 1)) for x in X_old]).flatten()
+Y_list_imag_training = np.array([gp_surrogate_model_imag(x.reshape(1, 1)) for x in X_old]).flatten()
 
 
 Y_list_cov = np.array([gp_surrogate_covariance(x.reshape(1, 1)) for x in new_points]).flatten()
-print(Y_list)
 Y_list_imag_cov = np.array([gp_surrogate_covariance_imag(x.reshape(1, 1)) for x in new_points]).flatten()
-print(Y_list_imag)
-
-
-
 
 std_dev = np.sqrt(Y_list_cov)
 upper_bound = Y_list + 1.96 * std_dev
 lower_bound = Y_list - 1.96 * std_dev
-
-
 
 std_dev = np.sqrt(Y_list_imag_cov)
 upper_bound_imag = Y_list_imag + 1.96 * std_dev
@@ -273,36 +252,25 @@ plt.figure(figsize=(8, 5))
 plt.plot(new_points.flatten(), Y_list.flatten(), label="GP Surrogate Model", color='b')
 plt.scatter(new_points.flatten(), Y_list.flatten(), label="GP Surrogate Model", color='b')
 plt.fill_between(new_points.flatten(), lower_bound, upper_bound, color='b', alpha=0.2, label="95% Confidence Interval")
-#plt.scatter(X_old, Y_old, color='r', marker='x', label="Training Data")  # Original data points
+plt.scatter(X_old, Y_list_training.flatten(), color='g', marker='x', label="Regression at training point")  # Original data points
+plt.scatter(X_old, Y_old, color='r', marker='x', label="Training Data")  # Original data points
 plt.xlabel("X_test (New Inputs)")
 plt.ylabel("Predicted Y")
-plt.title("Gaussian Process Surrogate Model")
+plt.title("Real Energy Gaussian Process")
 plt.legend()
 plt.grid()
 plt.show()
-#
-
-
-#plt.figure(figsize=(8, 5))
-#plt.plot(new_points.flatten(), std_dev.flatten(), label="GP Surrogate Model", color='b')
-#plt.scatter(new_points.flatten(), std_dev.flatten(), label="GP Surrogate Model", color='b')
-##plt.scatter(X_old, Y_old, color='r', marker='x', label="Training Data")  # Original data points
-#plt.xlabel("X_test (New Inputs)")
-#plt.ylabel("Predicted Y")
-#plt.title("Gaussian Process Surrogate Model")
-#plt.legend()
-#plt.grid()
-#plt.show()
 #
 
 plt.figure(figsize=(8, 5))
 plt.plot(new_points.flatten(), Y_list_imag.flatten(), label="GP Surrogate Model", color='b')
 plt.scatter(new_points.flatten(), Y_list_imag.flatten(), label="GP Surrogate Model", color='b')
 plt.fill_between(new_points.flatten(), lower_bound_imag, upper_bound_imag, color='b', alpha=0.2, label="95% Confidence Interval")
-#plt.scatter(X_old, Y_imag_old, color='r', marker='x', label="Training Data")  # Original data points
+plt.scatter(X_old, Y_list_imag_training.flatten(), color='g', marker='x', label="Regression at training point")  # Original data points
+plt.scatter(X_old, Y_imag_old, color='r', marker='x', label="Training Data")  # Original data points
 plt.xlabel("X_test (New Inputs)")
 plt.ylabel("Predicted Y")
-plt.title("Gaussian Process Surrogate Model")
+plt.title("Imaginary Energy Gaussian Process")
 plt.legend()
 plt.grid()
 plt.show()
@@ -366,18 +334,13 @@ def gp_surrogate_covariance_deriv(x_star):
     return np.array(yy_imag).flatten()
 
 Y_list = np.array([gp_surrogate_derivative(x.reshape(1, 1)) for x in new_points]).flatten()
-print(Y_list)
-
+Y_list_training = np.array([gp_surrogate_derivative(x.reshape(1, 1)) for x in X_old]).flatten()
 
 Y_list_cov = np.array([gp_surrogate_covariance_deriv(x.reshape(1, 1)) for x in new_points]).flatten()
-print(Y_list_cov)
-
 
 std_dev = np.sqrt(Y_list_cov)
 upper_bound = Y_list + 1.96 * std_dev
-print(upper_bound_imag)
 lower_bound = Y_list - 1.96 * std_dev
-print(lower_bound_imag)
 # Ensure Y_list is in correct shape
 #Y_list = Y_list.flatten()  # Convert to 1D array if needed
 #Y_list_cov = Y_list_cov.flatten()
@@ -386,18 +349,14 @@ plt.figure(figsize=(8, 5))
 plt.plot(new_points.flatten(), Y_list.flatten(), label="GP Surrogate Model", color='b')
 plt.scatter(new_points.flatten(), Y_list.flatten(), label="GP Surrogate Model", color='b')
 plt.fill_between(new_points.flatten(), lower_bound, upper_bound, color='b', alpha=0.2, label="95% Confidence Interval")
-#plt.scatter(X_old, Y_old, color='r', marker='x', label="Training Data")  # Original data points
+plt.scatter(X_old, Y_list_training.flatten(), color='g', marker='x', label="Regression at training point")  # Original data points
+plt.scatter(X_old, Y_deriv_old, color='r', marker='x', label="QP data")  # Original data points
 plt.xlabel("X_test (New Inputs)")
 plt.ylabel("Predicted Y")
-plt.title("Gaussian Process Surrogate Model")
+plt.title("Real Derivative Surrogate Model")
 plt.legend()
 plt.grid()
 plt.show()
-
-
-
-
-
 
 def gp_surrogate_derivative_2(x_star):
     # Normalize input
@@ -435,8 +394,6 @@ def gp_surrogate_derivative_3(x_star):
     # Derivative
     d2kdx2_derivative = variance * exp_term * (3 * diff / lengthscale ** 4 - (diff ** 3) / lengthscale ** 6)
 
-
-
     d2y_dx2_norm = d2kdx2_derivative.T @ alpha
 
     # Convert back to original scale (denormalization)
@@ -445,58 +402,6 @@ def gp_surrogate_derivative_3(x_star):
     return d2y_dx2
 
 
-X_test = np.array([1.2000E-03,
-1.2500E-03,
-1.3000E-03,
-1.3500E-03,
-1.4000E-03,
-1.4500E-03,
-1.5000E-03,
-1.5500E-03,
-1.6000E-03,
-1.6500E-03,
-1.7000E-03,
-1.7500E-03,
-1.8000E-03,
-1.8500E-03]).reshape(-1,1)
-#Y_derivative_list = []
-#for x_star in new_points:
-#    # Reshape x_star to make sure it's 2D for the function (it should be (1, 1))
-#    x_star_reshaped = x_star.reshape(1, 1)
-#
-#    # Calculate the derivative for this specific point
-#    Y_derivative = gp_surrogate_derivative(x_star_reshaped)
-#
-#    # Append the result to the list
-#    Y_derivative_list.append(Y_derivative)
-#
-## Convert the list to a numpy array for convenience (optional)
-#Y_derivative_array = np.array(Y_derivative_list)
-#
-## Print the analytical derivatives
-#print("Analytical derivatives:\n", Y_derivative_array)
-#
-
-Y_list = np.array([gp_surrogate_covariance_deriv(x.reshape(1, 1)) for x in new_points]).flatten()
-print(Y_list)
-
-
-
-                                                                                                      
-# Ensure Y_list is in correct shape
-#Y_list = Y_list.flatten()  # Convert to 1D array if needed
-## Plot the surrogate model predictions
-#plt.figure(figsize=(8, 5))
-#plt.plot(new_points.flatten(), Y_list.flatten(), label="GP Surrogate Model", color='b')
-#plt.scatter(new_points.flatten(), Y_list.flatten(), label="GP Surrogate Model", color='b')
-##plt.scatter(X_old, Y_old, color='r', marker='x', label="Training Data")  # Original data points
-#plt.xlabel("X_test (New Inputs)")
-#plt.ylabel("Predicted Y")
-#plt.title("Gaussian Process Surrogate Model")
-#plt.legend()
-#plt.grid()
-#plt.show()
-#
 
 def gp_surrogate_derivative_imag(x_star):
 
@@ -536,9 +441,7 @@ def gp_surrogate_covariance_deriv_imag(x_star):
 
 
     k_star_deriv = -((x_star_norm-X) / lengthscale**2) * variance * np.exp(-((x_star_norm - X)**2) / (2*lengthscale**2)) 
-    print("k_star_deriv", k_star_deriv.shape)
     k_star_star_deriv = variance / (lengthscale**2)
-    print("k_star_star_deriv", k_star_star_deriv.shape)
     K = kernel_imag.K(X,X)
 
     L = cholesky(K + np.eye(len(X)) * 1e-10, lower=True)
@@ -549,7 +452,6 @@ def gp_surrogate_covariance_deriv_imag(x_star):
 
     # Compute the covariance of the surrogate
     y_surrogate_cov = k_star_star_deriv - k_star_deriv.T @ v
-    print("y_surrogate_cov shape:", y_surrogate_cov.shape) 
     y_surrogate_cov = y_surrogate_cov.item()
     # Compute gradient
 
@@ -559,26 +461,28 @@ def gp_surrogate_covariance_deriv_imag(x_star):
 
     return np.array(yy_imag).flatten()
 
-Y_list = np.array([gp_surrogate_covariance_deriv_imag(x.reshape(1, 1)) for x in new_points]).flatten()
-print(Y_list)
 
+Y_list = np.array([gp_surrogate_derivative_imag(x.reshape(1, 1)) for x in new_points]).flatten()
+Y_list_training = np.array([gp_surrogate_derivative_imag(x.reshape(1, 1)) for x in X_old]).flatten()
 
+Y_list_cov = np.array([gp_surrogate_covariance_deriv_imag(x.reshape(1, 1)) for x in new_points]).flatten()
 
+std_dev = np.sqrt(Y_list_cov)
+upper_bound = Y_list + 1.96 * std_dev
+lower_bound = Y_list - 1.96 * std_dev
 
-# Ensure Y_list is in correct shape
-Y_list = Y_list.flatten()  # Convert to 1D array if needed
-# Plot the surrogate model predictions
 plt.figure(figsize=(8, 5))
 plt.plot(new_points.flatten(), Y_list.flatten(), label="GP Surrogate Model", color='b')
 plt.scatter(new_points.flatten(), Y_list.flatten(), label="GP Surrogate Model", color='b')
-#plt.scatter(X_old, Y_old, color='r', marker='x', label="Training Data")  # Original data points
+plt.fill_between(new_points.flatten(), lower_bound, upper_bound, color='b', alpha=0.2, label="95% Confidence Interval")
+plt.scatter(X_old, Y_list_training.flatten(), color='g', marker='x', label="Regression at training point")  # Original data points
+plt.scatter(X_old, Y_imag_deriv_old, color='r', marker='x', label="QP data")  # Original data points
 plt.xlabel("X_test (New Inputs)")
 plt.ylabel("Predicted Y")
-plt.title("Gaussian Process Surrogate Model")
+plt.title("Imaginary Derivative Surrogate Model")
 plt.legend()
 plt.grid()
 plt.show()
-
 
 
 def gp_surrogate_derivative_imag_2(x_star):
@@ -625,44 +529,6 @@ def gp_surrogate_derivative_imag_3(x_star):
 
     return d2y_dx2
 
-
-
-
-
-
-
-
-X_test = np.array([1.2000E-03,
-1.2500E-03,
-1.3000E-03,
-1.3500E-03,
-1.4000E-03,
-1.4500E-03,
-1.5000E-03,
-1.5500E-03,
-1.6000E-03,
-1.6500E-03,
-1.7000E-03,
-1.7500E-03,
-1.8000E-03,
-1.8500E-03]).reshape(-1,1)
-Y_imag_derivative_list = []
-for x_star in new_points:
-    # Reshape x_star to make sure it's 2D for the function (it should be (1, 1))
-    x_star_reshaped = x_star.reshape(1, 1)
-
-    # Calculate the derivative for this specific point
-    Y_derivative_imag = gp_surrogate_derivative_imag(x_star_reshaped)
-
-    # Append the result to the list
-    Y_imag_derivative_list.append(Y_derivative_imag)
-
-# Convert the list to a numpy array for convenience (optional)
-Y_derivative_array_imag = np.array(Y_imag_derivative_list)
-
-# Print the analytical derivatives
-print("Analytical derivatives:\n", Y_derivative_array_imag)
-
 def gp_surrogate_velocity(x_star):
     # Normalize input
     x_star = np.atleast_2d(x_star).T
@@ -678,31 +544,12 @@ def gp_surrogate_velocity_variance(x_star):
     return velocity.item()
 
 
-X_test = np.array([1.2000E-03,
-1.2500E-03,
-1.3000E-03,
-1.3500E-03,
-1.4000E-03,
-1.4500E-03,
-1.5000E-03,
-1.5500E-03,
-1.6000E-03,
-1.6500E-03,
-1.7000E-03,
-1.7500E-03,
-1.8000E-03,
-1.8500E-03,
-2.000E-03,
-2.300E-03,
-2.700E-03,
-2.800E-03                   ]).reshape(-1,1)
 Velocity_list = []
 Velocity_variance_list = []
 x_min = np.min(X_old)
 x_max = np.max(X_old)
 
 # Create an array of 100 evenly spaced points between x_min and x_max
-new_points = np.linspace(x_min, x_max, 300).reshape(-1, 1)
 
 for x_star in new_points:
     # Reshape x_star to make sure it's 2D for the function (it should be (1, 1))
@@ -717,22 +564,10 @@ for x_star in new_points:
 # Convert the list to a numpy array for convenience (optional)
 Velocity_array = np.array(Velocity_list)
 Velocity_var_array = np.array(Velocity_variance_list)
-print("Velocity_variance:\n", Velocity_var_array)
 std_dev = np.sqrt(Velocity_var_array)
 upper_bound = Velocity_array + 1.96 * std_dev
 lower_bound = Velocity_array - 1.96 * std_dev
-print("Velocity:\n", Velocity_array)
 
-
-#plt.figure(figsize=(8, 5))
-#plt.plot(new_points.flatten(), Velocity_var_array.flatten(), label="GP Surrogate Model", color='b')
-#plt.scatter(new_points.flatten(), Velocity_var_array.flatten(), label="GP Surrogate Model", color='b')
-#plt.xlabel("X_test (New Inputs)")
-#plt.ylabel("Predicted Y")
-#plt.title("Gaussian Process Surrogate Model")
-#plt.legend()
-#plt.grid()
-#plt.show()   
 #
 Velocity_deriv_list_old=[]
 for x_star in X_old:
@@ -749,15 +584,15 @@ for x_star in X_old:
 Velocity_array_old = np.array(Velocity_deriv_list_old)
 
 
-
 plt.figure(figsize=(8, 5))
 plt.plot(new_points.flatten(), Velocity_array.flatten(), label="GP Surrogate Model", color='b')
 plt.scatter(new_points.flatten(), Velocity_array.flatten(), label="GP Surrogate Model", color='b')
-plt.scatter(X_old, Velocity_array_old.flatten(), color='r', marker='x', label="Training Data")  # Original data points
+plt.scatter(X_old, Velocity_array_old.flatten(), color='g', marker='x', label="Regression in training points")  # Original data points
+plt.scatter(X_old, velocity_old, color='r', marker='x', label="QP data")
 plt.fill_between(new_points.flatten(), lower_bound, upper_bound, color='b', alpha=0.2, label="95% Confidence Interval")
 plt.xlabel("X_test (New Inputs)")
 plt.ylabel("Predicted Y")
-plt.title("Gaussian Process Surrogate Model")
+plt.title("Velocity Surrogate Model")
 plt.legend()
 plt.grid()
 plt.show()
@@ -770,12 +605,7 @@ def velocity_deriv(x_scalar):
     velocity_deriv = (gp_surrogate_derivative_imag(x)**2+gp_surrogate_derivative(x)**2) + x*(gp_surrogate_derivative_imag(x)*gp_surrogate_derivative_imag_2(x)+gp_surrogate_derivative(x)*gp_surrogate_derivative_2(x))
     return velocity_deriv
 
-
-x_min = np.min(X_old)
-x_max = np.max(X_old)
-
 # Create an array of 100 evenly spaced points between x_min and x_max
-new_points = np.linspace(x_min, x_max, 300).reshape(-1, 1)
 Velocity_deriv_list = []
 for x_star in new_points:
     # Reshape x_star to make sure it's 2D for the function (it should be (1, 1))
@@ -790,39 +620,6 @@ for x_star in new_points:
 # Convert the list to a numpy array for convenience (optional)
 Velocity_deriv_array = np.array(Velocity_deriv_list)
 
-
-Velocity_deriv_list_old = []
-for x_star in X_old:
-    # Reshape x_star to make sure it's 2D for the function (it should be (1, 1))
-    x_star_reshaped = x_star.reshape(1, 1)
-
-    # Calculate the derivative for this specific point
-    Velocity = velocity_deriv(x_star_reshaped)
-
-    # Append the result to the list
-    Velocity_deriv_list_old.append(Velocity)
-
-# Convert the list to a numpy array for convenience (optional)
-Velocity_deriv_array_old = np.array(Velocity_deriv_list_old)
-
-
-# Create an array of 100 evenly spaced points between x_min and x_max
-plt.figure(figsize=(8, 5))
-plt.plot(new_points.flatten(), Velocity_deriv_array.flatten(), label="GP Surrogate Model", color='b')
-plt.scatter(new_points.flatten(), Velocity_deriv_array.flatten(), label="GP Surrogate Model", color='b')
-plt.scatter(X_old, Velocity_deriv_array_old.flatten(), color='r', marker='x', label="Training Data")  # Original data points
-plt.xlabel("X_test (New Inputs)")
-plt.ylabel("Predicted Y")
-plt.title("Gaussian Process Surrogate Model")
-plt.legend()
-plt.grid()
-plt.show()
-
-
-
-
-
-
 Velocity_deriv_list = []
 for x_star in X_old:
     # Reshape x_star to make sure it's 2D for the function (it should be (1, 1))
@@ -835,25 +632,20 @@ for x_star in X_old:
     Velocity_deriv_list.append(Velocity)
 
 # Convert the list to a numpy array for convenience (optional)
-Velocity_deriv_array = np.array(Velocity_deriv_list)
+Velocity_deriv_array_old    = np.array(Velocity_deriv_list)
+
 
 # Create an array of 100 evenly spaced points between x_min and x_max
 plt.figure(figsize=(8, 5))
-plt.plot(X_old.flatten(), Velocity_deriv_array.flatten(), label="GP Surrogate Model", color='b')
-plt.scatter(X_old.flatten(), Velocity_deriv_array.flatten(), label="GP Surrogate Model", color='b')
-#plt.scatter(X_old, Y_imag_old, color='r', marker='x', label="Training Data")  # Original data points
+plt.plot(new_points.flatten(), Velocity_deriv_array.flatten(), label="GP Surrogate Model", color='b')
+plt.scatter(new_points.flatten(), Velocity_deriv_array.flatten(), label="GP Surrogate Model", color='b')
+plt.scatter(X_old, Velocity_deriv_array_old.flatten(), color='r', marker='x', label="Training Data")  # Original data points
 plt.xlabel("X_test (New Inputs)")
 plt.ylabel("Predicted Y")
-plt.title("Gaussian Process Surrogate Model")
+plt.title("Velocity first derivative Surrogate Model")
 plt.legend()
 plt.grid()
 plt.show()
-
-
-
-
-
-#print("Velocity:\n", Velocity_deriv_array)
 
 def velocity_deriv_derivative(x_scalar):
     x = np.atleast_1d(x_scalar)
@@ -899,7 +691,7 @@ plt.scatter(new_points.flatten(), Velocity_deriv2_array.flatten(), label="GP Sur
 #plt.scatter(X_old, Y_imag_old, color='r', marker='x', label="Training Data")  # Original data points
 plt.xlabel("X_test (New Inputs)")
 plt.ylabel("Predicted Y")
-plt.title("Gaussian Process Surrogate Model")
+plt.title("Velovity 2nd derivative Surrogate Model")
 plt.legend()
 plt.grid()
 plt.show()
@@ -909,7 +701,6 @@ plt.show()
 from scipy.optimize import root_scalar
 from scipy.optimize import minimize_scalar
 
-new_points = np.linspace(x_min, x_max, 1000).reshape(-1, 1)
 # Convert X_test to intervals between consecutive points
 intervals = [(new_points[i], new_points[i+1]) for i in range(len(new_points) - 1)]
 # Find roots in each interval
@@ -934,14 +725,34 @@ for interval in intervals:
         pass
 
 
+eta_predicted = []
+energy_predicted = []
+imag_energy_predicted = []
+deriv_predicted = []
+imag_deriv_predicted = []
+velocity_predicted  = []
+
+
+for i in X_old:
+        eta_predicted.append(i)
+        energy_predicted.append(gp_surrogate_model(i))
+        imag_energy_predicted.append(gp_surrogate_model_imag(i))
+        deriv_predicted.append(gp_surrogate_derivative(i))
+        imag_deriv_predicted.append(gp_surrogate_derivative_imag(i))
+        velocity_predicted.append(gp_surrogate_velocity(i))
+
+np.savetxt("Predicted_points.dat",np.column_stack((eta_predicted, energy_predicted, imag_energy_predicted, deriv_predicted, imag_deriv_predicted, velocity_predicted)), fmt="%.10f")
 np.savetxt("Minima.dat",np.column_stack((roots, energy, imag_energy, deriv, imag_deriv)), fmt="%.10f")
 #print("Roots:", roots)
 
-
 x_min, x_max = X_old[0], X_old[len(X_old)-1]   # Example interval
-
 # Find the maximum by minimizing the negative function
 result = minimize_scalar(lambda x: -gp_surrogate_covariance(x), bounds=(x_min, x_max), method='bounded')
+
+
+# Find the maximum by minimizing the negative function
+result_imag = minimize_scalar(lambda x: -gp_surrogate_covariance_imag(x), bounds=(x_min, x_max), method='bounded')
+
 
 # Extract the maximum point
 x_max_value = result.x
@@ -950,33 +761,18 @@ y_max_value = gp_surrogate_covariance(result.x)  # Negate back to original funct
 x_max_value = x_max_value.item()
 y_max_value = y_max_value.item()
 
+x_max_value_imag = result_imag.x
+y_max_value_imag = gp_surrogate_covariance(result_imag.x)  # Negate back to original function value
+
+x_max_value_imag = x_max_value_imag.item()
+y_max_value_imag = y_max_value_imag.item()
+
 
 # Print the results
-np.savetxt("Max_Uncertainty.dat",np.column_stack((x_max_value,y_max_value)), fmt="%.10f")
 
-
-
-#intervals = [(0.0012, 0.0019)]
-#
-## Find roots in different intervals
-#roots = [root_scalar(velocity_deriv, bracket=interval, method='bisect').root for interval in intervals]
-#print("Roots:", roots)
-#
-#
-
-
-
-
-#from sympy import real_roots, symbols
-#
-#x = symbols('x')
-#
-#f = x*np.sqrt(gp_surrogate_derivative_imag(x)**2+gp_surrogate_derivative(x)**2)
-#d1 = f.diff(x)
-#d2 = d1.diff(x)  # = f.diff(x,2)
-#extrema = real_roots(d1)
-#for i in extrema:
-#  if d2.subs(x, i).is_positive:
-#     print('minimum',i)
-#  else:
-#     print('maxima',i)
+all_data = np.vstack((
+    np.column_stack((x_max_value, y_max_value)),
+    np.column_stack((x_max_value_imag, y_max_value_imag))
+))
+np.savetxt("Max_Uncertainty.dat", all_data, fmt="%.10f")
+np.savetxt("Max_Uncertainty_mean.dat", [(x_max_value+x_max_value_imag)/2], fmt="%.10f")
