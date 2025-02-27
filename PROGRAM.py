@@ -4,8 +4,13 @@ import GPy
 
 #np.random.seed(42)
 
-data = np.loadtxt('datafile.dat')
 
+
+
+# Loading data from training set and big scan from QP to compare
+
+data = np.loadtxt('datafile.dat')
+data_big = np.loadtxt('datafile_big_scan.dat')
 
 X = data[:,0].reshape(-1,1)
 Y = data[:,1].reshape(-1,1)
@@ -16,20 +21,30 @@ Y_deriv_old = data[:,5].reshape(-1,1)
 Y_imag_deriv_old = data[:,6].reshape(-1,1)
 velocity_old = data[:,7].reshape(-1,1)
 
-#kernel = GPy.kern.RBF(input_dim=1, variance=1, lengthscale=1)
+X_big = data_big[:,0].reshape(-1,1)
+Y_big = data_big[:,1].reshape(-1,1)
+Y_imag_big = data_big[:,2].reshape(-1,1)
+Y_deriv_scaled_big = data_big[:,3].reshape(-1,1)
+Y_imag_deriv_scaled_big = data_big[:,4].reshape(-1,1)
+Y_deriv_big = data_big[:,5].reshape(-1,1)
+Y_imag_deriv_big = data_big[:,6].reshape(-1,1)
+velocity_big = data_big[:,7].reshape(-1,1)
+
+
+
+#Defining kernels for the regressions for the real and imaginary energy
+
 kernel = GPy.kern.RBF(input_dim=1, variance=np.random.uniform(0.5, 4), lengthscale=np.random.uniform(0.5, 4))
-
 kernel_imag = GPy.kern.RBF(input_dim=1, variance=np.random.uniform(0.5, 4), lengthscale=np.random.uniform(0.5, 4))
-#kernel_imag = GPy.kern.RBF(input_dim=1, variance=1, lengthscale=1)
-#kernel = GPy.kern.Matern32(1)
 
-
+# Setting priors to guide the optimization of the hyperparameters
 kernel_imag.variance.set_prior(GPy.priors.Gamma(2., 0.5))  # Example, set prior explicitly
 kernel_imag.lengthscale.set_prior(GPy.priors.Gamma(2., 0.5))
 kernel.variance.set_prior(GPy.priors.Gamma(2., 0.5))  # Example, set prior explicitly
 kernel.lengthscale.set_prior(GPy.priors.Gamma(2., 0.5))
-##print("Initial kernel parameters:", kernel)
 
+
+#Normalization of the training data
 X_mean_old = np.mean(X)
 Y_mean_old = np.mean(Y)
 Y_imag_mean_old = np.mean(Y_imag)
@@ -37,41 +52,21 @@ X_std_old = np.std(X)
 Y_std_old = np.std(Y)
 Y_imag_std_old = np.std(Y_imag)
 
-
 X_old=X
 Y_old=Y
 Y_imag_old=Y_imag
-
-
 
 X = (X - np.mean(X)) / np.std(X)
 Y = (Y - np.mean(Y)) / np.std(Y)
 Y_imag = (Y_imag - np.mean(Y_imag)) / np.std(Y_imag)
 
-#X_mean_new = np.mean(X)
-#Y_mean_new = np.mean(Y)
-#X_std_new = np.std(X)
-#Y_std_new = np.std(Y)
 
-#Z = np.linspace(min(X), max(X), 3).reshape(-1, 1)
+#Optimization of the hyperparameters + fixing the noise to 0
 m = GPy.models.GPRegression(X,Y,kernel)
 m.Gaussian_noise.variance.fix(0.0)
 
-#m = GPy.models.SparseGPRegression(X, Y, kernel, Z=Z)
-#m.Gaussian_noise.constrain_positive()
-#m.Mat32.constrain_positive()
-
-
 #m.likelihood.variance = 1e-1
 from IPython.display import display
-#print(m[''])
-
-#fig = m.plot()
-#plt.show()
-
-
-
-
 
 #m.optimize(messages=True)
 m.optimize_restarts(messages=False, max_iters=1000, optimizer='bfgs', num_restarts=40)
@@ -80,39 +75,33 @@ fig = m.plot()
 print("Noise variance:", m.Gaussian_noise.variance.values)
 plt.show()
 #
+#Defining the number of points used in the plots of the Surrogate Model
 x_min = np.min(X)
 x_max = np.max(X)
-
-
 new_points = np.linspace(x_min, x_max, 1000).reshape(-1, 1)
-samples = m.posterior_samples_f(new_points, size=5)  # Draw 3 sample functions
-for i in range(samples.shape[2]):  # Iterate over 3 samples
-    plt.plot(new_points, samples[:, 0, i], label=f"Sample {i+1}")
 
-plt.scatter(X, Y, color='red', label="Training Points")  # Plot training points
-plt.legend()
-plt.show()
+#Plotting a sample of the Gaussian that are used to build the Surrogate model
+#samples = m.posterior_samples_f(new_points, size=5)  # Draw 3 sample functions
+#for i in range(samples.shape[2]):  # Iterate over 3 samples
+#    plt.plot(new_points, samples[:, 0, i], label=f"Sample {i+1}")
+#
+#plt.scatter(X, Y, color='red', label="Training Points")  # Plot training points
+#plt.legend()
+#plt.show()
 
-#samples = samples.squeeze(axis=1)  # Now samples.shape becomes (2, 3)
-
-
+#Optimization of the hyperparameters + fixing the noise to 0 for the imaginary energy
 m_imag = GPy.models.GPRegression(X,Y_imag,kernel_imag)
 m_imag.Gaussian_noise.variance.fix(0.000000)
 m_imag.optimize_restarts(messages=False, max_iters=1000, optimizer='bfgs', num_restarts=40)
-#print (m.gradient)
-
-#m.optimize_restarts(num_restarts = 15)
-
 display(m_imag)
-#
-#
 fig = m_imag.plot()
 print("Noise variance:", m_imag.Gaussian_noise.variance.values)
 plt.show()
 #
 
 ####EXTRACING THE VALUE OF ENERGY FOR A GIVEN VALUE OF ETA
-#### CALCULATING THE DERIVATIVE OF THE SUUROGATE MODEL
+#### CALCULATING THE DERIVATIVE OF THE SUUROGATE MODEL + COVARIANCE OF THE SURROGATE MODEL
+### AND ITS DERIVATIVE
 
 K = kernel.K(X,X)
 K_imag = kernel_imag.K(X,X)
@@ -218,14 +207,10 @@ def gp_surrogate_covariance_imag(x_star):
     return yy_imag.flatten()
 
 
-# Create an array of 100 evenly spaced points between x_min and x_max
-
-#X_test = np.linspace(1.2e-3, 1.85e-3, 100).reshape(-1,1)
+## Plotting the surrogate model for the real and the imaginary energies
 
 x_min = np.min(X_old)
 x_max = np.max(X_old)
-
-
 new_points = np.linspace(x_min, x_max, 1000).reshape(-1, 1)
 
 Y_list = np.array([gp_surrogate_model(x.reshape(1, 1)) for x in new_points]).flatten()
@@ -247,13 +232,14 @@ lower_bound_imag = Y_list_imag - 1.96 * std_dev
 # Ensure Y_list is in correct shape
 #Y_list = Y_list.flatten()  # Convert to 1D array if needed
 #Y_list_cov = Y_list_cov.flatten()
-# Plot the surrogate model predictions
+# Plot the surrogate model predictions for the real and imaginary energies
 plt.figure(figsize=(8, 5))
 plt.plot(new_points.flatten(), Y_list.flatten(), label="GP Surrogate Model", color='b')
 plt.scatter(new_points.flatten(), Y_list.flatten(), label="GP Surrogate Model", color='b')
 plt.fill_between(new_points.flatten(), lower_bound, upper_bound, color='b', alpha=0.2, label="95% Confidence Interval")
 plt.scatter(X_old, Y_list_training.flatten(), color='g', marker='x', label="Regression at training point")  # Original data points
 plt.scatter(X_old, Y_old, color='r', marker='x', label="Training Data")  # Original data points
+plt.scatter(X_big, Y_big, color='k', marker='x', label="Big Scan")
 plt.xlabel("X_test (New Inputs)")
 plt.ylabel("Predicted Y")
 plt.title("Real Energy Gaussian Process")
@@ -268,13 +254,16 @@ plt.scatter(new_points.flatten(), Y_list_imag.flatten(), label="GP Surrogate Mod
 plt.fill_between(new_points.flatten(), lower_bound_imag, upper_bound_imag, color='b', alpha=0.2, label="95% Confidence Interval")
 plt.scatter(X_old, Y_list_imag_training.flatten(), color='g', marker='x', label="Regression at training point")  # Original data points
 plt.scatter(X_old, Y_imag_old, color='r', marker='x', label="Training Data")  # Original data points
+plt.scatter(X_big, Y_imag_big, color='k', marker='x', label="Big Scan")
 plt.xlabel("X_test (New Inputs)")
 plt.ylabel("Predicted Y")
 plt.title("Imaginary Energy Gaussian Process")
 plt.legend()
 plt.grid()
 plt.show()
+
 #
+# Calcualting derivatives (and variances) of the Surrogate Model for teh Real energy
 
 def gp_surrogate_derivative(x_star):
     
@@ -333,6 +322,8 @@ def gp_surrogate_covariance_deriv(x_star):
 
     return np.array(yy_imag).flatten()
 
+
+#Plotting the 1st derivative with the correspoind Uncertainty
 Y_list = np.array([gp_surrogate_derivative(x.reshape(1, 1)) for x in new_points]).flatten()
 Y_list_training = np.array([gp_surrogate_derivative(x.reshape(1, 1)) for x in X_old]).flatten()
 
@@ -341,9 +332,7 @@ Y_list_cov = np.array([gp_surrogate_covariance_deriv(x.reshape(1, 1)) for x in n
 std_dev = np.sqrt(Y_list_cov)
 upper_bound = Y_list + 1.96 * std_dev
 lower_bound = Y_list - 1.96 * std_dev
-# Ensure Y_list is in correct shape
-#Y_list = Y_list.flatten()  # Convert to 1D array if needed
-#Y_list_cov = Y_list_cov.flatten()
+
 # Plot the surrogate model predictions
 plt.figure(figsize=(8, 5))
 plt.plot(new_points.flatten(), Y_list.flatten(), label="GP Surrogate Model", color='b')
@@ -351,12 +340,16 @@ plt.scatter(new_points.flatten(), Y_list.flatten(), label="GP Surrogate Model", 
 plt.fill_between(new_points.flatten(), lower_bound, upper_bound, color='b', alpha=0.2, label="95% Confidence Interval")
 plt.scatter(X_old, Y_list_training.flatten(), color='g', marker='x', label="Regression at training point")  # Original data points
 plt.scatter(X_old, Y_deriv_old, color='r', marker='x', label="QP data")  # Original data points
+plt.scatter(X_big, Y_deriv_big, color='k', marker='x', label="QP Big Scan")  # Original data points
 plt.xlabel("X_test (New Inputs)")
 plt.ylabel("Predicted Y")
 plt.title("Real Derivative Surrogate Model")
 plt.legend()
 plt.grid()
 plt.show()
+
+#
+# Calculating higher order derivatives (necessary to find the minimum of the velocity)
 
 def gp_surrogate_derivative_2(x_star):
     # Normalize input
@@ -402,6 +395,7 @@ def gp_surrogate_derivative_3(x_star):
     return d2y_dx2
 
 
+# Calcualting derivatives (and variances) of the Surrogate Model for the Imaginary energy
 
 def gp_surrogate_derivative_imag(x_star):
 
@@ -462,6 +456,7 @@ def gp_surrogate_covariance_deriv_imag(x_star):
     return np.array(yy_imag).flatten()
 
 
+#Plotting the derivative of the Surrogate model for the imaginary energy
 Y_list = np.array([gp_surrogate_derivative_imag(x.reshape(1, 1)) for x in new_points]).flatten()
 Y_list_training = np.array([gp_surrogate_derivative_imag(x.reshape(1, 1)) for x in X_old]).flatten()
 
@@ -477,6 +472,7 @@ plt.scatter(new_points.flatten(), Y_list.flatten(), label="GP Surrogate Model", 
 plt.fill_between(new_points.flatten(), lower_bound, upper_bound, color='b', alpha=0.2, label="95% Confidence Interval")
 plt.scatter(X_old, Y_list_training.flatten(), color='g', marker='x', label="Regression at training point")  # Original data points
 plt.scatter(X_old, Y_imag_deriv_old, color='r', marker='x', label="QP data")  # Original data points
+plt.scatter(X_big, Y_imag_deriv_big, color='k', marker='x', label="QP Big Scan")  # Original data points
 plt.xlabel("X_test (New Inputs)")
 plt.ylabel("Predicted Y")
 plt.title("Imaginary Derivative Surrogate Model")
@@ -529,6 +525,10 @@ def gp_surrogate_derivative_imag_3(x_star):
 
     return d2y_dx2
 
+
+#Computing the velocity with the corresponding uncertanty
+
+
 def gp_surrogate_velocity(x_star):
     # Normalize input
     x_star = np.atleast_2d(x_star).T
@@ -543,13 +543,9 @@ def gp_surrogate_velocity_variance(x_star):
 
     return velocity.item()
 
-
+#Plotting the velocity
 Velocity_list = []
 Velocity_variance_list = []
-x_min = np.min(X_old)
-x_max = np.max(X_old)
-
-# Create an array of 100 evenly spaced points between x_min and x_max
 
 for x_star in new_points:
     # Reshape x_star to make sure it's 2D for the function (it should be (1, 1))
@@ -589,6 +585,7 @@ plt.plot(new_points.flatten(), Velocity_array.flatten(), label="GP Surrogate Mod
 plt.scatter(new_points.flatten(), Velocity_array.flatten(), label="GP Surrogate Model", color='b')
 plt.scatter(X_old, Velocity_array_old.flatten(), color='g', marker='x', label="Regression in training points")  # Original data points
 plt.scatter(X_old, velocity_old, color='r', marker='x', label="QP data")
+plt.scatter(X_old, velocity_old, color='k', marker='x', label="QP Big Scan")
 plt.fill_between(new_points.flatten(), lower_bound, upper_bound, color='b', alpha=0.2, label="95% Confidence Interval")
 plt.xlabel("X_test (New Inputs)")
 plt.ylabel("Predicted Y")
@@ -597,7 +594,9 @@ plt.legend()
 plt.grid()
 plt.show()
 
-
+#
+# Calculating and plotting 1st and 2nd derivative of the velocity 
+#
 def velocity_deriv(x_scalar):
 
     x = np.atleast_1d(x_scalar)
@@ -605,7 +604,6 @@ def velocity_deriv(x_scalar):
     velocity_deriv = (gp_surrogate_derivative_imag(x)**2+gp_surrogate_derivative(x)**2) + x*(gp_surrogate_derivative_imag(x)*gp_surrogate_derivative_imag_2(x)+gp_surrogate_derivative(x)*gp_surrogate_derivative_2(x))
     return velocity_deriv
 
-# Create an array of 100 evenly spaced points between x_min and x_max
 Velocity_deriv_list = []
 for x_star in new_points:
     # Reshape x_star to make sure it's 2D for the function (it should be (1, 1))
@@ -697,7 +695,9 @@ plt.grid()
 plt.show()
 
 
-
+#
+# Computing the minimas of the surrogate model (between the first and last training points)
+#
 from scipy.optimize import root_scalar
 from scipy.optimize import minimize_scalar
 
@@ -745,6 +745,9 @@ np.savetxt("Predicted_points.dat",np.column_stack((eta_predicted, energy_predict
 np.savetxt("Minima.dat",np.column_stack((roots, energy, imag_energy, deriv, imag_deriv)), fmt="%.10f")
 #print("Roots:", roots)
 
+# 
+# Finding the point of Max Uncertainty (CHANGE TO COMPUTE UNCERTAINTY OF THE ABSOLUTE VALUE)
+#
 x_min, x_max = X_old[0], X_old[len(X_old)-1]   # Example interval
 # Find the maximum by minimizing the negative function
 result = minimize_scalar(lambda x: -gp_surrogate_covariance(x), bounds=(x_min, x_max), method='bounded')
