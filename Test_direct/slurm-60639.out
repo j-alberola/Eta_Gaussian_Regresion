@@ -1,0 +1,69 @@
+bash: cannot set terminal process group (100184): Inappropriate ioctl for device
+bash: no job control in this shell
+Removing compiler version 2023.1.0
+Use `module list` to view any remaining dependent modules.
+  Load "debugger" to debug DPC++ applications with the gdb-oneapi debugger.
+  Load "dpl" for additional DPC++ APIs: https://github.com/oneapi-src/oneDPL
+Removing mkl version 2023.1.0
+Use `module list` to view any remaining dependent modules.
+
+
+       ______        _____            ______   ____   ____
+   ___|\     \   ___|\    \       ___|\     \ |    | |    |
+  /    /\     \ |    |\    \     |    |\     \|    | |    |
+ /    /  |     ||    | |    |    |    |/____/||    |_|    |
+|    |   |     ||    |/____/| ___|    \|   | ||    .-.    |
+|\    \  |__   ||    ||    |||    \    \___|/ |    | |    |
+| \    \\`  \ /||    ||____|/|    |\     \    |    | |    |
+ \ \ ___\\   \ ||____|       |\ ___\|_____|   |____| |____|
+  \ |    ||___|/|    |       | |    |     |   |    | |    |
+   \|____||   | |____|        \|____|_____|   |____| |____|
+      \(  |___|   \(             \(    )/       \(     )/
+       '    )/     '              '    '         '     '
+            '
+
+
+   -- Quantum  Package  Shell --
+
+Loading compiler version 2023.1.0
+  Load "debugger" to debug DPC++ applications with the gdb-oneapi debugger.
+  Load "dpl" for additional DPC++ APIs: https://github.com/oneapi-src/oneDPL
+Loading mkl version 2023.1.0
+OMP: Info #269: OMP_NESTED variable deprecated, please use OMP_MAX_ACTIVE_LEVELS instead.
+cp: cannot stat 'N2_minus.hf.4states.no.cipsi.17200.data1.good': No such file or directory
+Traceback (most recent call last):
+  File "/beegfs/jalberola/PHD/test_interface_2025/Spline-optimal-eta/TEST_17200/PYTHON_script/Eta_Gaussian_Regresion/Test_direct/PROGRAM_bayesian_optimization_direct_test.py", line 9, in <module>
+    data = np.loadtxt('datafile.dat')
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/home/jalberola/.local/lib/python3.11/site-packages/numpy/lib/npyio.py", line 1373, in loadtxt
+    arr = _read(fname, dtype=dtype, comment=comment, delimiter=delimiter,
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/home/jalberola/.local/lib/python3.11/site-packages/numpy/lib/npyio.py", line 992, in _read
+    fh = np.lib._datasource.open(fname, 'rt', encoding=encoding)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/home/jalberola/.local/lib/python3.11/site-packages/numpy/lib/_datasource.py", line 193, in open
+    return ds.open(path, mode, encoding=encoding, newline=newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/home/jalberola/.local/lib/python3.11/site-packages/numpy/lib/_datasource.py", line 533, in open
+    raise FileNotFoundError(f"{path} not found.")
+FileNotFoundError: datafile.dat not found.
+OMP: Info #269: OMP_NESTED variable deprecated, please use OMP_MAX_ACTIVE_LEVELS instead.
+awk: fatal: cannot open file `N2_minus.hf.4states.no.cipsi.17200.data2.good' for reading (No such file or directory)
+sort: cannot read: N2_minus.hf.4states.no.cipsi.17200.data1.good: No such file or directory
+ /beegfs/jalberola/PHD/test_interface_2025/Spline-optimal-eta/TEST_17200/PYTHON_script/Eta_Gaussian_Regresion/Test_direct/PROGRAM_bayesian_optimization_direct_test.py:9: UserWarning:loadtxt: input contained no data: "datafile.dat"
+Traceback (most recent call last):
+  File "/beegfs/jalberola/PHD/test_interface_2025/Spline-optimal-eta/TEST_17200/PYTHON_script/Eta_Gaussian_Regresion/Test_direct/PROGRAM_bayesian_optimization_direct_test.py", line 12, in <module>
+    X = data[:,0].reshape(-1,1)
+        ~~~~^^^^^
+IndexError: too many indices for array: array is 1-dimensional, but 2 were indexed
+OMP: Info #269: OMP_NESTED variable deprecated, please use OMP_MAX_ACTIVE_LEVELS instead.
+cp: overwrite 'N2_minus.hf.4states.no.cipsi.17200.scan.script.0.0068793553.LB.out'? awk: fatal: cannot open file `N2_minus.hf.4states.no.cipsi.17200.data2.good' for reading (No such file or directory)
+sort: cannot read: N2_minus.hf.4states.no.cipsi.17200.data1.good: No such file or directory
+ /beegfs/jalberola/PHD/test_interface_2025/Spline-optimal-eta/TEST_17200/PYTHON_script/Eta_Gaussian_Regresion/Test_direct/PROGRAM_bayesian_optimization_direct_test.py:9: UserWarning:loadtxt: input contained no data: "datafile.dat"
+Traceback (most recent call last):
+  File "/beegfs/jalberola/PHD/test_interface_2025/Spline-optimal-eta/TEST_17200/PYTHON_script/Eta_Gaussian_Regresion/Test_direct/PROGRAM_bayesian_optimization_direct_test.py", line 12, in <module>
+    X = data[:,0].reshape(-1,1)
+        ~~~~^^^^^
+IndexError: too many indices for array: array is 1-dimensional, but 2 were indexed
+OMP: Info #269: OMP_NESTED variable deprecated, please use OMP_MAX_ACTIVE_LEVELS instead.
+slurmstepd-cnzen3-8: error: *** JOB 60639 ON cnzen3-8 CANCELLED AT 2025-03-10T13:27:14 ***

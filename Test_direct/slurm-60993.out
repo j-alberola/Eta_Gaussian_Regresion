@@ -1,0 +1,33 @@
+bash: cannot set terminal process group (62685): Inappropriate ioctl for device
+bash: no job control in this shell
+Removing compiler version 2023.1.0
+Use `module list` to view any remaining dependent modules.
+  Load "debugger" to debug DPC++ applications with the gdb-oneapi debugger.
+  Load "dpl" for additional DPC++ APIs: https://github.com/oneapi-src/oneDPL
+Removing mkl version 2023.1.0
+Use `module list` to view any remaining dependent modules.
+
+                             .x+=:.
+                            z`    ^%    .uef^"
+             .d``              .   <k :d88E
+    .u@u     @8Ne.   .u      .@8Ned8" `888E
+ .zWF8888bx  %8888:u@88N   .@^%8888"   888E .z8k
+.888  9888    `888I  888. x88:  `)8b.  888E~?888L
+I888  9888     888I  888I 8888N=*8888  888E  888E
+I888  9888     888I  888I  %8"    R88  888E  888E
+I888  9888   uW888L  888'   @8Wou 9%   888E  888E
+`888Nx?888  '*88888Nu88P  .888888P`    888E  888E
+ "88" '888  ~ '88888F`    `   ^"F     m888N= 888>
+       88E     888 ^                   `Y"   888
+       98>     *8E                          J88"
+       '8      '8>                          @%
+        `       "
+
+
+   -- Quantum  Package  Shell --
+
+Loading compiler version 2023.1.0
+  Load "debugger" to debug DPC++ applications with the gdb-oneapi debugger.
+  Load "dpl" for additional DPC++ APIs: https://github.com/oneapi-src/oneDPL
+Loading mkl version 2023.1.0
+OMP: Info #269: OMP_NESTED variable deprecated, please use OMP_MAX_ACTIVE_LEVELS instead.

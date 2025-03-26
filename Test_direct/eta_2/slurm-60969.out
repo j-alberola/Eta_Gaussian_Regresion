@@ -1,0 +1,84 @@
+bash: cannot set terminal process group (54942): Inappropriate ioctl for device
+bash: no job control in this shell
+Removing compiler version 2023.1.0
+Use `module list` to view any remaining dependent modules.
+  Load "debugger" to debug DPC++ applications with the gdb-oneapi debugger.
+  Load "dpl" for additional DPC++ APIs: https://github.com/oneapi-src/oneDPL
+Removing mkl version 2023.1.0
+Use `module list` to view any remaining dependent modules.
+
+
+______________________________________________/[0;34m\\[m\_________
+ _____________________________________________\/[0;34m\\[m\_________
+  ___/[0;34m\\[m[0;34m\\[m[0;34m\\[m[0;34m\\[m______/[0;34m\\[m[0;34m\\[m[0;34m\\[m[0;34m\\[m\_________________\/[0;34m\\[m\_________
+   __/[0;34m\\[m\////[0;34m\\[m\____/[0;34m\\[m\/////[0;34m\\[m\___/[0;34m\\[m[0;34m\\[m[0;34m\\[m[0;34m\\[m[0;34m\\[m__\/[0;34m\\[m\_________
+    _\//[0;34m\\[m[0;34m\\[m[0;34m\\[m[0;34m\\[m\___\/[0;34m\\[m[0;34m\\[m[0;34m\\[m[0;34m\\[m[0;34m\\[m___\/[0;34m\\[m\//////___\/[0;34m\\[m[0;34m\\[m[0;34m\\[m[0;34m\\[m[0;34m\\[m__
+     __\///////[0;34m\\[m\___\/[0;34m\\[m\//////____\/[0;34m\\[m[0;34m\\[m[0;34m\\[m[0;34m\\[m[0;34m\\[m__\/[0;34m\\[m\/////[0;34m\\[m\_
+      ________\/[0;34m\\[m\___\/[0;34m\\[m\__________\////////[0;34m\\[m\__\/[0;34m\\[m\___\/[0;34m\\[m\_
+       ________\/[0;34m\\[m[0;34m\\[m__\/[0;34m\\[m\___________/[0;34m\\[m[0;34m\\[m[0;34m\\[m[0;34m\\[m[0;34m\\[m__\/[0;34m\\[m\___\/[0;34m\\[m\_
+        ________\////___\///___________\//////////___\///____\///__
+
+
+
+   -- Quantum  Package  Shell --
+
+Loading compiler version 2023.1.0
+  Load "debugger" to debug DPC++ applications with the gdb-oneapi debugger.
+  Load "dpl" for additional DPC++ APIs: https://github.com/oneapi-src/oneDPL
+Loading mkl version 2023.1.0
+OMP: Info #269: OMP_NESTED variable deprecated, please use OMP_MAX_ACTIVE_LEVELS instead.
+reconstraining parameters rbf.variance
+reconstraining parameters rbf.lengthscale
+reconstraining parameters rbf.variance
+reconstraining parameters rbf.lengthscale
+ /nfs/home/jalberola/.local/lib/python3.11/site-packages/paramz/transformations.py:111: RuntimeWarning:divide by zero encountered in log
+Global minimum of LB acquisition at x = [0.00687936], value = 0.002037558390950778
+Global maximum of EI acquisition at x = [0.007182], value = 2.8295005717844017e-05
+OMP: Info #269: OMP_NESTED variable deprecated, please use OMP_MAX_ACTIVE_LEVELS instead.
+reconstraining parameters rbf.variance
+reconstraining parameters rbf.lengthscale
+reconstraining parameters rbf.variance
+reconstraining parameters rbf.lengthscale
+ /nfs/home/jalberola/.local/lib/python3.11/site-packages/paramz/transformations.py:111: RuntimeWarning:divide by zero encountered in log
+Global minimum of LB acquisition at x = [0.00747951], value = 0.002094941433018075
+Global maximum of EI acquisition at x = [0.00733607], value = 2.8953705518331885e-05
+OMP: Info #269: OMP_NESTED variable deprecated, please use OMP_MAX_ACTIVE_LEVELS instead.
+reconstraining parameters rbf.variance
+reconstraining parameters rbf.lengthscale
+reconstraining parameters rbf.variance
+reconstraining parameters rbf.lengthscale
+ /nfs/home/jalberola/.local/lib/python3.11/site-packages/paramz/transformations.py:111: RuntimeWarning:divide by zero encountered in log
+Global minimum of LB acquisition at x = [0.00739749], value = 0.0021253219773855426
+Global maximum of EI acquisition at x = [0.00498516], value = 5.684336557976874e-20
+OMP: Info #269: OMP_NESTED variable deprecated, please use OMP_MAX_ACTIVE_LEVELS instead.
+reconstraining parameters rbf.variance
+reconstraining parameters rbf.lengthscale
+reconstraining parameters rbf.variance
+reconstraining parameters rbf.lengthscale
+ /nfs/home/jalberola/.local/lib/python3.11/site-packages/paramz/transformations.py:111: RuntimeWarning:divide by zero encountered in log
+Global minimum of LB acquisition at x = [0.00739628], value = 0.002125247939890153
+Global maximum of EI acquisition at x = [0.00261866], value = 6.670085072282035e-33
+OMP: Info #269: OMP_NESTED variable deprecated, please use OMP_MAX_ACTIVE_LEVELS instead.
+reconstraining parameters rbf.variance
+reconstraining parameters rbf.lengthscale
+reconstraining parameters rbf.variance
+reconstraining parameters rbf.lengthscale
+ /nfs/home/jalberola/.local/lib/python3.11/site-packages/paramz/transformations.py:111: RuntimeWarning:divide by zero encountered in log
+Global minimum of LB acquisition at x = [0.00739638], value = 0.002125252115747498
+Global maximum of EI acquisition at x = [0.00261866], value = 5.283938185423863e-33
+OMP: Info #269: OMP_NESTED variable deprecated, please use OMP_MAX_ACTIVE_LEVELS instead.
+reconstraining parameters rbf.variance
+reconstraining parameters rbf.lengthscale
+reconstraining parameters rbf.variance
+reconstraining parameters rbf.lengthscale
+ /nfs/home/jalberola/.local/lib/python3.11/site-packages/paramz/transformations.py:111: RuntimeWarning:divide by zero encountered in log
+Global minimum of LB acquisition at x = [0.0073964], value = 0.002125253963208122
+Global maximum of EI acquisition at x = [0.00261866], value = 4.066439212320868e-33
+OMP: Info #269: OMP_NESTED variable deprecated, please use OMP_MAX_ACTIVE_LEVELS instead.
+reconstraining parameters rbf.variance
+reconstraining parameters rbf.lengthscale
+reconstraining parameters rbf.variance
+reconstraining parameters rbf.lengthscale
+ /nfs/home/jalberola/.local/lib/python3.11/site-packages/paramz/transformations.py:111: RuntimeWarning:divide by zero encountered in log
+Global minimum of LB acquisition at x = [0.00739642], value = 0.0021252550591420007
+Global maximum of EI acquisition at x = [0.00261866], value = 3.362260666543263e-33

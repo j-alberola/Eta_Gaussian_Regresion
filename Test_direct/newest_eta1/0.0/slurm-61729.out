@@ -1,0 +1,496 @@
+bash: cannot set terminal process group (15338): Inappropriate ioctl for device
+bash: no job control in this shell
+Removing compiler version 2023.1.0
+Use `module list` to view any remaining dependent modules.
+  Load "debugger" to debug DPC++ applications with the gdb-oneapi debugger.
+  Load "dpl" for additional DPC++ APIs: https://github.com/oneapi-src/oneDPL
+Removing mkl version 2023.1.0
+Use `module list` to view any remaining dependent modules.
+
+
+       ______        _____            ______   ____   ____
+   ___|\     \   ___|\    \       ___|\     \ |    | |    |
+  /    /\     \ |    |\    \     |    |\     \|    | |    |
+ /    /  |     ||    | |    |    |    |/____/||    |_|    |
+|    |   |     ||    |/____/| ___|    \|   | ||    .-.    |
+|\    \  |__   ||    ||    |||    \    \___|/ |    | |    |
+| \    \\`  \ /||    ||____|/|    |\     \    |    | |    |
+ \ \ ___\\   \ ||____|       |\ ___\|_____|   |____| |____|
+  \ |    ||___|/|    |       | |    |     |   |    | |    |
+   \|____||   | |____|        \|____|_____|   |____| |____|
+      \(  |___|   \(             \(    )/       \(     )/
+       '    )/     '              '    '         '     '
+            '
+
+
+   -- Quantum  Package  Shell --
+
+Loading compiler version 2023.1.0
+  Load "debugger" to debug DPC++ applications with the gdb-oneapi debugger.
+  Load "dpl" for additional DPC++ APIs: https://github.com/oneapi-src/oneDPL
+Loading mkl version 2023.1.0
+OMP: Info #269: OMP_NESTED variable deprecated, please use OMP_MAX_ACTIVE_LEVELS instead.
+reconstraining parameters rbf.variance
+reconstraining parameters rbf.lengthscale
+reconstraining parameters rbf.variance
+reconstraining parameters rbf.lengthscale
+ /nfs/home/jalberola/.local/lib/python3.11/site-packages/paramz/transformations.py:111: RuntimeWarning:divide by zero encountered in log
+Global minimum of LB acquisition at x = [0.00651033], value = -0.0013995741491519835
+Global maximum of EI acquisition at x = [0.00646546], value = 8.410113990840956e-05
+cp: overwrite 'datafile_original.dat'? OMP: Info #269: OMP_NESTED variable deprecated, please use OMP_MAX_ACTIVE_LEVELS instead.
+reconstraining parameters rbf.variance
+reconstraining parameters rbf.lengthscale
+reconstraining parameters rbf.variance
+reconstraining parameters rbf.lengthscale
+ /nfs/home/jalberola/.local/lib/python3.11/site-packages/paramz/transformations.py:111: RuntimeWarning:divide by zero encountered in log
+Global minimum of LB acquisition at x = [0.0049397], value = -0.0006385318313227402
+Global maximum of EI acquisition at x = [0.00486622], value = 4.7772655801782876e-05
+Difference in velocity:0.000591989
+Difference in eta:0.00157063
+OMP: Info #269: OMP_NESTED variable deprecated, please use OMP_MAX_ACTIVE_LEVELS instead.
+reconstraining parameters rbf.variance
+reconstraining parameters rbf.lengthscale
+reconstraining parameters rbf.variance
+reconstraining parameters rbf.lengthscale
+ /nfs/home/jalberola/.local/lib/python3.11/site-packages/paramz/transformations.py:111: RuntimeWarning:divide by zero encountered in log
+Global minimum of LB acquisition at x = [0.], value = -7.128921335195083e-09
+Global maximum of EI acquisition at x = [0.00749336], value = 2.2523990594137738e-05
+Difference in velocity:0.00131297
+Difference in eta:0.0049397
+OMP: Info #269: OMP_NESTED variable deprecated, please use OMP_MAX_ACTIVE_LEVELS instead.
+reconstraining parameters rbf.variance
+reconstraining parameters rbf.lengthscale
+reconstraining parameters rbf.variance
+reconstraining parameters rbf.lengthscale
+ /nfs/home/jalberola/.local/lib/python3.11/site-packages/paramz/transformations.py:111: RuntimeWarning:divide by zero encountered in log
+Global minimum of LB acquisition at x = [0.00315243], value = -0.00038643803985544904
+Global maximum of EI acquisition at x = [0.0031499], value = 3.689473853597447e-05
+Difference in velocity:0
+Difference in eta:0.00315243
+OMP: Info #269: OMP_NESTED variable deprecated, please use OMP_MAX_ACTIVE_LEVELS instead.
+reconstraining parameters rbf.variance
+reconstraining parameters rbf.lengthscale
+reconstraining parameters rbf.variance
+reconstraining parameters rbf.lengthscale
+ /nfs/home/jalberola/.local/lib/python3.11/site-packages/paramz/transformations.py:111: RuntimeWarning:divide by zero encountered in log
+Global minimum of LB acquisition at x = [0.], value = -5.954320965417572e-09
+Global maximum of EI acquisition at x = [0.00753026], value = 4.075164570632516e-06
+Difference in velocity:0.00418248
+Difference in eta:0.00315243
+OMP: Info #269: OMP_NESTED variable deprecated, please use OMP_MAX_ACTIVE_LEVELS instead.
+cp: overwrite 'N2_minus.hf.4states.no.cipsi.17200.scan.script.0.0000000000.LB.out'? reconstraining parameters rbf.variance
+reconstraining parameters rbf.lengthscale
+reconstraining parameters rbf.variance
+reconstraining parameters rbf.lengthscale
+ /nfs/home/jalberola/.local/lib/python3.11/site-packages/paramz/transformations.py:111: RuntimeWarning:divide by zero encountered in log
+Global minimum of LB acquisition at x = [0.], value = -4.954322625373391e-09
+Global maximum of EI acquisition at x = [0.00753498], value = 2.568909197020751e-06
+Difference in velocity:0
+Difference in eta:0
+OMP: Info #269: OMP_NESTED variable deprecated, please use OMP_MAX_ACTIVE_LEVELS instead.
+cp: overwrite 'N2_minus.hf.4states.no.cipsi.17200.scan.script.0.0000000000.LB.out'? cp: overwrite 'datafile_LB.dat'? OMP: Info #269: OMP_NESTED variable deprecated, please use OMP_MAX_ACTIVE_LEVELS instead.
+Traceback (most recent call last):
+  File "/beegfs/jalberola/PHD/test_interface_2025/Spline-optimal-eta/TEST_17200/PYTHON_script/Eta_Gaussian_Regresion/Test_direct/newest_eta1/0.0/PROGRAM_bayesian_optimization_direct_test.py", line 9, in <module>
+    data = np.loadtxt('datafile.dat')
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/home/jalberola/.local/lib/python3.11/site-packages/numpy/lib/npyio.py", line 1373, in loadtxt
+    arr = _read(fname, dtype=dtype, comment=comment, delimiter=delimiter,
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/home/jalberola/.local/lib/python3.11/site-packages/numpy/lib/npyio.py", line 1016, in _read
+    arr = _load_from_filelike(
+          ^^^^^^^^^^^^^^^^^^^^
+ValueError: could not convert string '0.000,' to float64 at row 0, column 1.
+Difference in energy:0.00057003
+Difference in eta:0.00106952
+OMP: Info #269: OMP_NESTED variable deprecated, please use OMP_MAX_ACTIVE_LEVELS instead.
+Traceback (most recent call last):
+  File "/beegfs/jalberola/PHD/test_interface_2025/Spline-optimal-eta/TEST_17200/PYTHON_script/Eta_Gaussian_Regresion/Test_direct/newest_eta1/0.0/PROGRAM_bayesian_optimization_direct_test.py", line 9, in <module>
+    data = np.loadtxt('datafile.dat')
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/home/jalberola/.local/lib/python3.11/site-packages/numpy/lib/npyio.py", line 1373, in loadtxt
+    arr = _read(fname, dtype=dtype, comment=comment, delimiter=delimiter,
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/home/jalberola/.local/lib/python3.11/site-packages/numpy/lib/npyio.py", line 1016, in _read
+    arr = _load_from_filelike(
+          ^^^^^^^^^^^^^^^^^^^^
+ValueError: could not convert string '0.000,' to float64 at row 0, column 1.
+Difference in energy:3.81285e-05
+Difference in eta:0
+OMP: Info #269: OMP_NESTED variable deprecated, please use OMP_MAX_ACTIVE_LEVELS instead.
+cp: overwrite 'N2_minus.hf.4states.no.cipsi.17200.scan.script.0.0075349824.EI.out'? Traceback (most recent call last):
+  File "/beegfs/jalberola/PHD/test_interface_2025/Spline-optimal-eta/TEST_17200/PYTHON_script/Eta_Gaussian_Regresion/Test_direct/newest_eta1/0.0/PROGRAM_bayesian_optimization_direct_test.py", line 9, in <module>
+    data = np.loadtxt('datafile.dat')
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/home/jalberola/.local/lib/python3.11/site-packages/numpy/lib/npyio.py", line 1373, in loadtxt
+    arr = _read(fname, dtype=dtype, comment=comment, delimiter=delimiter,
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/home/jalberola/.local/lib/python3.11/site-packages/numpy/lib/npyio.py", line 1016, in _read
+    arr = _load_from_filelike(
+          ^^^^^^^^^^^^^^^^^^^^
+ValueError: could not convert string '0.000,' to float64 at row 0, column 1.
+Difference in energy:3.81285e-05
+Difference in eta:0
+OMP: Info #269: OMP_NESTED variable deprecated, please use OMP_MAX_ACTIVE_LEVELS instead.
+cp: overwrite 'N2_minus.hf.4states.no.cipsi.17200.scan.script.0.0075349824.EI.out'? Traceback (most recent call last):
+  File "/beegfs/jalberola/PHD/test_interface_2025/Spline-optimal-eta/TEST_17200/PYTHON_script/Eta_Gaussian_Regresion/Test_direct/newest_eta1/0.0/PROGRAM_bayesian_optimization_direct_test.py", line 9, in <module>
+    data = np.loadtxt('datafile.dat')
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/home/jalberola/.local/lib/python3.11/site-packages/numpy/lib/npyio.py", line 1373, in loadtxt
+    arr = _read(fname, dtype=dtype, comment=comment, delimiter=delimiter,
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/home/jalberola/.local/lib/python3.11/site-packages/numpy/lib/npyio.py", line 1016, in _read
+    arr = _load_from_filelike(
+          ^^^^^^^^^^^^^^^^^^^^
+ValueError: could not convert string '0.000,' to float64 at row 0, column 1.
+Difference in energy:3.81285e-05
+Difference in eta:0
+OMP: Info #269: OMP_NESTED variable deprecated, please use OMP_MAX_ACTIVE_LEVELS instead.
+cp: overwrite 'N2_minus.hf.4states.no.cipsi.17200.scan.script.0.0075349824.EI.out'? Traceback (most recent call last):
+  File "/beegfs/jalberola/PHD/test_interface_2025/Spline-optimal-eta/TEST_17200/PYTHON_script/Eta_Gaussian_Regresion/Test_direct/newest_eta1/0.0/PROGRAM_bayesian_optimization_direct_test.py", line 9, in <module>
+    data = np.loadtxt('datafile.dat')
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/home/jalberola/.local/lib/python3.11/site-packages/numpy/lib/npyio.py", line 1373, in loadtxt
+    arr = _read(fname, dtype=dtype, comment=comment, delimiter=delimiter,
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/home/jalberola/.local/lib/python3.11/site-packages/numpy/lib/npyio.py", line 1016, in _read
+    arr = _load_from_filelike(
+          ^^^^^^^^^^^^^^^^^^^^
+ValueError: could not convert string '0.000,' to float64 at row 0, column 1.
+Difference in energy:3.81285e-05
+Difference in eta:0
+OMP: Info #269: OMP_NESTED variable deprecated, please use OMP_MAX_ACTIVE_LEVELS instead.
+cp: overwrite 'N2_minus.hf.4states.no.cipsi.17200.scan.script.0.0075349824.EI.out'? Traceback (most recent call last):
+  File "/beegfs/jalberola/PHD/test_interface_2025/Spline-optimal-eta/TEST_17200/PYTHON_script/Eta_Gaussian_Regresion/Test_direct/newest_eta1/0.0/PROGRAM_bayesian_optimization_direct_test.py", line 9, in <module>
+    data = np.loadtxt('datafile.dat')
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/home/jalberola/.local/lib/python3.11/site-packages/numpy/lib/npyio.py", line 1373, in loadtxt
+    arr = _read(fname, dtype=dtype, comment=comment, delimiter=delimiter,
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/home/jalberola/.local/lib/python3.11/site-packages/numpy/lib/npyio.py", line 1016, in _read
+    arr = _load_from_filelike(
+          ^^^^^^^^^^^^^^^^^^^^
+ValueError: could not convert string '0.000,' to float64 at row 0, column 1.
+Difference in energy:3.81285e-05
+Difference in eta:0
+OMP: Info #269: OMP_NESTED variable deprecated, please use OMP_MAX_ACTIVE_LEVELS instead.
+cp: overwrite 'N2_minus.hf.4states.no.cipsi.17200.scan.script.0.0075349824.EI.out'? Traceback (most recent call last):
+  File "/beegfs/jalberola/PHD/test_interface_2025/Spline-optimal-eta/TEST_17200/PYTHON_script/Eta_Gaussian_Regresion/Test_direct/newest_eta1/0.0/PROGRAM_bayesian_optimization_direct_test.py", line 9, in <module>
+    data = np.loadtxt('datafile.dat')
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/home/jalberola/.local/lib/python3.11/site-packages/numpy/lib/npyio.py", line 1373, in loadtxt
+    arr = _read(fname, dtype=dtype, comment=comment, delimiter=delimiter,
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/home/jalberola/.local/lib/python3.11/site-packages/numpy/lib/npyio.py", line 1016, in _read
+    arr = _load_from_filelike(
+          ^^^^^^^^^^^^^^^^^^^^
+ValueError: could not convert string '0.000,' to float64 at row 0, column 1.
+Difference in energy:3.81285e-05
+Difference in eta:0
+OMP: Info #269: OMP_NESTED variable deprecated, please use OMP_MAX_ACTIVE_LEVELS instead.
+cp: overwrite 'N2_minus.hf.4states.no.cipsi.17200.scan.script.0.0075349824.EI.out'? Traceback (most recent call last):
+  File "/beegfs/jalberola/PHD/test_interface_2025/Spline-optimal-eta/TEST_17200/PYTHON_script/Eta_Gaussian_Regresion/Test_direct/newest_eta1/0.0/PROGRAM_bayesian_optimization_direct_test.py", line 9, in <module>
+    data = np.loadtxt('datafile.dat')
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/home/jalberola/.local/lib/python3.11/site-packages/numpy/lib/npyio.py", line 1373, in loadtxt
+    arr = _read(fname, dtype=dtype, comment=comment, delimiter=delimiter,
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/home/jalberola/.local/lib/python3.11/site-packages/numpy/lib/npyio.py", line 1016, in _read
+    arr = _load_from_filelike(
+          ^^^^^^^^^^^^^^^^^^^^
+ValueError: could not convert string '0.000,' to float64 at row 0, column 1.
+Difference in energy:3.81285e-05
+Difference in eta:0
+OMP: Info #269: OMP_NESTED variable deprecated, please use OMP_MAX_ACTIVE_LEVELS instead.
+cp: overwrite 'N2_minus.hf.4states.no.cipsi.17200.scan.script.0.0075349824.EI.out'? Traceback (most recent call last):
+  File "/beegfs/jalberola/PHD/test_interface_2025/Spline-optimal-eta/TEST_17200/PYTHON_script/Eta_Gaussian_Regresion/Test_direct/newest_eta1/0.0/PROGRAM_bayesian_optimization_direct_test.py", line 9, in <module>
+    data = np.loadtxt('datafile.dat')
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/home/jalberola/.local/lib/python3.11/site-packages/numpy/lib/npyio.py", line 1373, in loadtxt
+    arr = _read(fname, dtype=dtype, comment=comment, delimiter=delimiter,
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/home/jalberola/.local/lib/python3.11/site-packages/numpy/lib/npyio.py", line 1016, in _read
+    arr = _load_from_filelike(
+          ^^^^^^^^^^^^^^^^^^^^
+ValueError: could not convert string '0.000,' to float64 at row 0, column 1.
+Difference in energy:3.81285e-05
+Difference in eta:0
+OMP: Info #269: OMP_NESTED variable deprecated, please use OMP_MAX_ACTIVE_LEVELS instead.
+cp: overwrite 'N2_minus.hf.4states.no.cipsi.17200.scan.script.0.0075349824.EI.out'? Traceback (most recent call last):
+  File "/beegfs/jalberola/PHD/test_interface_2025/Spline-optimal-eta/TEST_17200/PYTHON_script/Eta_Gaussian_Regresion/Test_direct/newest_eta1/0.0/PROGRAM_bayesian_optimization_direct_test.py", line 9, in <module>
+    data = np.loadtxt('datafile.dat')
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/home/jalberola/.local/lib/python3.11/site-packages/numpy/lib/npyio.py", line 1373, in loadtxt
+    arr = _read(fname, dtype=dtype, comment=comment, delimiter=delimiter,
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/home/jalberola/.local/lib/python3.11/site-packages/numpy/lib/npyio.py", line 1016, in _read
+    arr = _load_from_filelike(
+          ^^^^^^^^^^^^^^^^^^^^
+ValueError: could not convert string '0.000,' to float64 at row 0, column 1.
+Difference in energy:3.81285e-05
+Difference in eta:0
+OMP: Info #269: OMP_NESTED variable deprecated, please use OMP_MAX_ACTIVE_LEVELS instead.
+cp: overwrite 'N2_minus.hf.4states.no.cipsi.17200.scan.script.0.0075349824.EI.out'? Traceback (most recent call last):
+  File "/beegfs/jalberola/PHD/test_interface_2025/Spline-optimal-eta/TEST_17200/PYTHON_script/Eta_Gaussian_Regresion/Test_direct/newest_eta1/0.0/PROGRAM_bayesian_optimization_direct_test.py", line 9, in <module>
+    data = np.loadtxt('datafile.dat')
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/home/jalberola/.local/lib/python3.11/site-packages/numpy/lib/npyio.py", line 1373, in loadtxt
+    arr = _read(fname, dtype=dtype, comment=comment, delimiter=delimiter,
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/home/jalberola/.local/lib/python3.11/site-packages/numpy/lib/npyio.py", line 1016, in _read
+    arr = _load_from_filelike(
+          ^^^^^^^^^^^^^^^^^^^^
+ValueError: could not convert string '0.000,' to float64 at row 0, column 1.
+Difference in energy:3.81285e-05
+Difference in eta:0
+OMP: Info #269: OMP_NESTED variable deprecated, please use OMP_MAX_ACTIVE_LEVELS instead.
+cp: overwrite 'N2_minus.hf.4states.no.cipsi.17200.scan.script.0.0075349824.EI.out'? Traceback (most recent call last):
+  File "/beegfs/jalberola/PHD/test_interface_2025/Spline-optimal-eta/TEST_17200/PYTHON_script/Eta_Gaussian_Regresion/Test_direct/newest_eta1/0.0/PROGRAM_bayesian_optimization_direct_test.py", line 9, in <module>
+    data = np.loadtxt('datafile.dat')
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/home/jalberola/.local/lib/python3.11/site-packages/numpy/lib/npyio.py", line 1373, in loadtxt
+    arr = _read(fname, dtype=dtype, comment=comment, delimiter=delimiter,
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/home/jalberola/.local/lib/python3.11/site-packages/numpy/lib/npyio.py", line 1016, in _read
+    arr = _load_from_filelike(
+          ^^^^^^^^^^^^^^^^^^^^
+ValueError: could not convert string '0.000,' to float64 at row 0, column 1.
+Difference in energy:3.81285e-05
+Difference in eta:0
+OMP: Info #269: OMP_NESTED variable deprecated, please use OMP_MAX_ACTIVE_LEVELS instead.
+cp: overwrite 'N2_minus.hf.4states.no.cipsi.17200.scan.script.0.0075349824.EI.out'? Traceback (most recent call last):
+  File "/beegfs/jalberola/PHD/test_interface_2025/Spline-optimal-eta/TEST_17200/PYTHON_script/Eta_Gaussian_Regresion/Test_direct/newest_eta1/0.0/PROGRAM_bayesian_optimization_direct_test.py", line 9, in <module>
+    data = np.loadtxt('datafile.dat')
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/home/jalberola/.local/lib/python3.11/site-packages/numpy/lib/npyio.py", line 1373, in loadtxt
+    arr = _read(fname, dtype=dtype, comment=comment, delimiter=delimiter,
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/home/jalberola/.local/lib/python3.11/site-packages/numpy/lib/npyio.py", line 1016, in _read
+    arr = _load_from_filelike(
+          ^^^^^^^^^^^^^^^^^^^^
+ValueError: could not convert string '0.000,' to float64 at row 0, column 1.
+Difference in energy:3.81285e-05
+Difference in eta:0
+OMP: Info #269: OMP_NESTED variable deprecated, please use OMP_MAX_ACTIVE_LEVELS instead.
+cp: overwrite 'N2_minus.hf.4states.no.cipsi.17200.scan.script.0.0075349824.EI.out'? Traceback (most recent call last):
+  File "/beegfs/jalberola/PHD/test_interface_2025/Spline-optimal-eta/TEST_17200/PYTHON_script/Eta_Gaussian_Regresion/Test_direct/newest_eta1/0.0/PROGRAM_bayesian_optimization_direct_test.py", line 9, in <module>
+    data = np.loadtxt('datafile.dat')
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/home/jalberola/.local/lib/python3.11/site-packages/numpy/lib/npyio.py", line 1373, in loadtxt
+    arr = _read(fname, dtype=dtype, comment=comment, delimiter=delimiter,
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/home/jalberola/.local/lib/python3.11/site-packages/numpy/lib/npyio.py", line 1016, in _read
+    arr = _load_from_filelike(
+          ^^^^^^^^^^^^^^^^^^^^
+ValueError: could not convert string '0.000,' to float64 at row 0, column 1.
+Difference in energy:3.81285e-05
+Difference in eta:0
+OMP: Info #269: OMP_NESTED variable deprecated, please use OMP_MAX_ACTIVE_LEVELS instead.
+cp: overwrite 'N2_minus.hf.4states.no.cipsi.17200.scan.script.0.0075349824.EI.out'? Traceback (most recent call last):
+  File "/beegfs/jalberola/PHD/test_interface_2025/Spline-optimal-eta/TEST_17200/PYTHON_script/Eta_Gaussian_Regresion/Test_direct/newest_eta1/0.0/PROGRAM_bayesian_optimization_direct_test.py", line 9, in <module>
+    data = np.loadtxt('datafile.dat')
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/home/jalberola/.local/lib/python3.11/site-packages/numpy/lib/npyio.py", line 1373, in loadtxt
+    arr = _read(fname, dtype=dtype, comment=comment, delimiter=delimiter,
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/home/jalberola/.local/lib/python3.11/site-packages/numpy/lib/npyio.py", line 1016, in _read
+    arr = _load_from_filelike(
+          ^^^^^^^^^^^^^^^^^^^^
+ValueError: could not convert string '0.000,' to float64 at row 0, column 1.
+Difference in energy:3.81285e-05
+Difference in eta:0
+OMP: Info #269: OMP_NESTED variable deprecated, please use OMP_MAX_ACTIVE_LEVELS instead.
+cp: overwrite 'N2_minus.hf.4states.no.cipsi.17200.scan.script.0.0075349824.EI.out'? Traceback (most recent call last):
+  File "/beegfs/jalberola/PHD/test_interface_2025/Spline-optimal-eta/TEST_17200/PYTHON_script/Eta_Gaussian_Regresion/Test_direct/newest_eta1/0.0/PROGRAM_bayesian_optimization_direct_test.py", line 9, in <module>
+    data = np.loadtxt('datafile.dat')
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/home/jalberola/.local/lib/python3.11/site-packages/numpy/lib/npyio.py", line 1373, in loadtxt
+    arr = _read(fname, dtype=dtype, comment=comment, delimiter=delimiter,
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/home/jalberola/.local/lib/python3.11/site-packages/numpy/lib/npyio.py", line 1016, in _read
+    arr = _load_from_filelike(
+          ^^^^^^^^^^^^^^^^^^^^
+ValueError: could not convert string '0.000,' to float64 at row 0, column 1.
+Difference in energy:3.81285e-05
+Difference in eta:0
+OMP: Info #269: OMP_NESTED variable deprecated, please use OMP_MAX_ACTIVE_LEVELS instead.
+cp: overwrite 'N2_minus.hf.4states.no.cipsi.17200.scan.script.0.0075349824.EI.out'? Traceback (most recent call last):
+  File "/beegfs/jalberola/PHD/test_interface_2025/Spline-optimal-eta/TEST_17200/PYTHON_script/Eta_Gaussian_Regresion/Test_direct/newest_eta1/0.0/PROGRAM_bayesian_optimization_direct_test.py", line 9, in <module>
+    data = np.loadtxt('datafile.dat')
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/home/jalberola/.local/lib/python3.11/site-packages/numpy/lib/npyio.py", line 1373, in loadtxt
+    arr = _read(fname, dtype=dtype, comment=comment, delimiter=delimiter,
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/home/jalberola/.local/lib/python3.11/site-packages/numpy/lib/npyio.py", line 1016, in _read
+    arr = _load_from_filelike(
+          ^^^^^^^^^^^^^^^^^^^^
+ValueError: could not convert string '0.000,' to float64 at row 0, column 1.
+Difference in energy:3.81285e-05
+Difference in eta:0
+OMP: Info #269: OMP_NESTED variable deprecated, please use OMP_MAX_ACTIVE_LEVELS instead.
+cp: overwrite 'N2_minus.hf.4states.no.cipsi.17200.scan.script.0.0075349824.EI.out'? Traceback (most recent call last):
+  File "/beegfs/jalberola/PHD/test_interface_2025/Spline-optimal-eta/TEST_17200/PYTHON_script/Eta_Gaussian_Regresion/Test_direct/newest_eta1/0.0/PROGRAM_bayesian_optimization_direct_test.py", line 9, in <module>
+    data = np.loadtxt('datafile.dat')
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/home/jalberola/.local/lib/python3.11/site-packages/numpy/lib/npyio.py", line 1373, in loadtxt
+    arr = _read(fname, dtype=dtype, comment=comment, delimiter=delimiter,
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/home/jalberola/.local/lib/python3.11/site-packages/numpy/lib/npyio.py", line 1016, in _read
+    arr = _load_from_filelike(
+          ^^^^^^^^^^^^^^^^^^^^
+ValueError: could not convert string '0.000,' to float64 at row 0, column 1.
+Difference in energy:3.81285e-05
+Difference in eta:0
+OMP: Info #269: OMP_NESTED variable deprecated, please use OMP_MAX_ACTIVE_LEVELS instead.
+cp: overwrite 'N2_minus.hf.4states.no.cipsi.17200.scan.script.0.0075349824.EI.out'? Traceback (most recent call last):
+  File "/beegfs/jalberola/PHD/test_interface_2025/Spline-optimal-eta/TEST_17200/PYTHON_script/Eta_Gaussian_Regresion/Test_direct/newest_eta1/0.0/PROGRAM_bayesian_optimization_direct_test.py", line 9, in <module>
+    data = np.loadtxt('datafile.dat')
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/home/jalberola/.local/lib/python3.11/site-packages/numpy/lib/npyio.py", line 1373, in loadtxt
+    arr = _read(fname, dtype=dtype, comment=comment, delimiter=delimiter,
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/home/jalberola/.local/lib/python3.11/site-packages/numpy/lib/npyio.py", line 1016, in _read
+    arr = _load_from_filelike(
+          ^^^^^^^^^^^^^^^^^^^^
+ValueError: could not convert string '0.000,' to float64 at row 0, column 1.
+Difference in energy:3.81285e-05
+Difference in eta:0
+OMP: Info #269: OMP_NESTED variable deprecated, please use OMP_MAX_ACTIVE_LEVELS instead.
+cp: overwrite 'N2_minus.hf.4states.no.cipsi.17200.scan.script.0.0075349824.EI.out'? Traceback (most recent call last):
+  File "/beegfs/jalberola/PHD/test_interface_2025/Spline-optimal-eta/TEST_17200/PYTHON_script/Eta_Gaussian_Regresion/Test_direct/newest_eta1/0.0/PROGRAM_bayesian_optimization_direct_test.py", line 9, in <module>
+    data = np.loadtxt('datafile.dat')
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/home/jalberola/.local/lib/python3.11/site-packages/numpy/lib/npyio.py", line 1373, in loadtxt
+    arr = _read(fname, dtype=dtype, comment=comment, delimiter=delimiter,
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/home/jalberola/.local/lib/python3.11/site-packages/numpy/lib/npyio.py", line 1016, in _read
+    arr = _load_from_filelike(
+          ^^^^^^^^^^^^^^^^^^^^
+ValueError: could not convert string '0.000,' to float64 at row 0, column 1.
+Difference in energy:3.81285e-05
+Difference in eta:0
+OMP: Info #269: OMP_NESTED variable deprecated, please use OMP_MAX_ACTIVE_LEVELS instead.
+cp: overwrite 'N2_minus.hf.4states.no.cipsi.17200.scan.script.0.0075349824.EI.out'? Traceback (most recent call last):
+  File "/beegfs/jalberola/PHD/test_interface_2025/Spline-optimal-eta/TEST_17200/PYTHON_script/Eta_Gaussian_Regresion/Test_direct/newest_eta1/0.0/PROGRAM_bayesian_optimization_direct_test.py", line 9, in <module>
+    data = np.loadtxt('datafile.dat')
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/home/jalberola/.local/lib/python3.11/site-packages/numpy/lib/npyio.py", line 1373, in loadtxt
+    arr = _read(fname, dtype=dtype, comment=comment, delimiter=delimiter,
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/home/jalberola/.local/lib/python3.11/site-packages/numpy/lib/npyio.py", line 1016, in _read
+    arr = _load_from_filelike(
+          ^^^^^^^^^^^^^^^^^^^^
+ValueError: could not convert string '0.000,' to float64 at row 0, column 1.
+Difference in energy:3.81285e-05
+Difference in eta:0
+OMP: Info #269: OMP_NESTED variable deprecated, please use OMP_MAX_ACTIVE_LEVELS instead.
+cp: overwrite 'N2_minus.hf.4states.no.cipsi.17200.scan.script.0.0075349824.EI.out'? Traceback (most recent call last):
+  File "/beegfs/jalberola/PHD/test_interface_2025/Spline-optimal-eta/TEST_17200/PYTHON_script/Eta_Gaussian_Regresion/Test_direct/newest_eta1/0.0/PROGRAM_bayesian_optimization_direct_test.py", line 9, in <module>
+    data = np.loadtxt('datafile.dat')
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/home/jalberola/.local/lib/python3.11/site-packages/numpy/lib/npyio.py", line 1373, in loadtxt
+    arr = _read(fname, dtype=dtype, comment=comment, delimiter=delimiter,
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/home/jalberola/.local/lib/python3.11/site-packages/numpy/lib/npyio.py", line 1016, in _read
+    arr = _load_from_filelike(
+          ^^^^^^^^^^^^^^^^^^^^
+ValueError: could not convert string '0.000,' to float64 at row 0, column 1.
+Difference in energy:3.81285e-05
+Difference in eta:0
+OMP: Info #269: OMP_NESTED variable deprecated, please use OMP_MAX_ACTIVE_LEVELS instead.
+cp: overwrite 'N2_minus.hf.4states.no.cipsi.17200.scan.script.0.0075349824.EI.out'? Traceback (most recent call last):
+  File "/beegfs/jalberola/PHD/test_interface_2025/Spline-optimal-eta/TEST_17200/PYTHON_script/Eta_Gaussian_Regresion/Test_direct/newest_eta1/0.0/PROGRAM_bayesian_optimization_direct_test.py", line 9, in <module>
+    data = np.loadtxt('datafile.dat')
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/home/jalberola/.local/lib/python3.11/site-packages/numpy/lib/npyio.py", line 1373, in loadtxt
+    arr = _read(fname, dtype=dtype, comment=comment, delimiter=delimiter,
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/home/jalberola/.local/lib/python3.11/site-packages/numpy/lib/npyio.py", line 1016, in _read
+    arr = _load_from_filelike(
+          ^^^^^^^^^^^^^^^^^^^^
+ValueError: could not convert string '0.000,' to float64 at row 0, column 1.
+Difference in energy:3.81285e-05
+Difference in eta:0
+OMP: Info #269: OMP_NESTED variable deprecated, please use OMP_MAX_ACTIVE_LEVELS instead.
+cp: overwrite 'N2_minus.hf.4states.no.cipsi.17200.scan.script.0.0075349824.EI.out'? Traceback (most recent call last):
+  File "/beegfs/jalberola/PHD/test_interface_2025/Spline-optimal-eta/TEST_17200/PYTHON_script/Eta_Gaussian_Regresion/Test_direct/newest_eta1/0.0/PROGRAM_bayesian_optimization_direct_test.py", line 9, in <module>
+    data = np.loadtxt('datafile.dat')
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/home/jalberola/.local/lib/python3.11/site-packages/numpy/lib/npyio.py", line 1373, in loadtxt
+    arr = _read(fname, dtype=dtype, comment=comment, delimiter=delimiter,
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/home/jalberola/.local/lib/python3.11/site-packages/numpy/lib/npyio.py", line 1016, in _read
+    arr = _load_from_filelike(
+          ^^^^^^^^^^^^^^^^^^^^
+ValueError: could not convert string '0.000,' to float64 at row 0, column 1.
+Difference in energy:3.81285e-05
+Difference in eta:0
+OMP: Info #269: OMP_NESTED variable deprecated, please use OMP_MAX_ACTIVE_LEVELS instead.
+cp: overwrite 'N2_minus.hf.4states.no.cipsi.17200.scan.script.0.0075349824.EI.out'? Traceback (most recent call last):
+  File "/beegfs/jalberola/PHD/test_interface_2025/Spline-optimal-eta/TEST_17200/PYTHON_script/Eta_Gaussian_Regresion/Test_direct/newest_eta1/0.0/PROGRAM_bayesian_optimization_direct_test.py", line 9, in <module>
+    data = np.loadtxt('datafile.dat')
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/home/jalberola/.local/lib/python3.11/site-packages/numpy/lib/npyio.py", line 1373, in loadtxt
+    arr = _read(fname, dtype=dtype, comment=comment, delimiter=delimiter,
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/home/jalberola/.local/lib/python3.11/site-packages/numpy/lib/npyio.py", line 1016, in _read
+    arr = _load_from_filelike(
+          ^^^^^^^^^^^^^^^^^^^^
+ValueError: could not convert string '0.000,' to float64 at row 0, column 1.
+Difference in energy:3.81285e-05
+Difference in eta:0
+OMP: Info #269: OMP_NESTED variable deprecated, please use OMP_MAX_ACTIVE_LEVELS instead.
+cp: overwrite 'N2_minus.hf.4states.no.cipsi.17200.scan.script.0.0075349824.EI.out'? Traceback (most recent call last):
+  File "/beegfs/jalberola/PHD/test_interface_2025/Spline-optimal-eta/TEST_17200/PYTHON_script/Eta_Gaussian_Regresion/Test_direct/newest_eta1/0.0/PROGRAM_bayesian_optimization_direct_test.py", line 9, in <module>
+    data = np.loadtxt('datafile.dat')
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/home/jalberola/.local/lib/python3.11/site-packages/numpy/lib/npyio.py", line 1373, in loadtxt
+    arr = _read(fname, dtype=dtype, comment=comment, delimiter=delimiter,
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/home/jalberola/.local/lib/python3.11/site-packages/numpy/lib/npyio.py", line 1016, in _read
+    arr = _load_from_filelike(
+          ^^^^^^^^^^^^^^^^^^^^
+ValueError: could not convert string '0.000,' to float64 at row 0, column 1.
+Difference in energy:3.81285e-05
+Difference in eta:0
+OMP: Info #269: OMP_NESTED variable deprecated, please use OMP_MAX_ACTIVE_LEVELS instead.
+cp: overwrite 'N2_minus.hf.4states.no.cipsi.17200.scan.script.0.0075349824.EI.out'? Traceback (most recent call last):
+  File "/beegfs/jalberola/PHD/test_interface_2025/Spline-optimal-eta/TEST_17200/PYTHON_script/Eta_Gaussian_Regresion/Test_direct/newest_eta1/0.0/PROGRAM_bayesian_optimization_direct_test.py", line 9, in <module>
+    data = np.loadtxt('datafile.dat')
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/home/jalberola/.local/lib/python3.11/site-packages/numpy/lib/npyio.py", line 1373, in loadtxt
+    arr = _read(fname, dtype=dtype, comment=comment, delimiter=delimiter,
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/home/jalberola/.local/lib/python3.11/site-packages/numpy/lib/npyio.py", line 1016, in _read
+    arr = _load_from_filelike(
+          ^^^^^^^^^^^^^^^^^^^^
+ValueError: could not convert string '0.000,' to float64 at row 0, column 1.
+Difference in energy:3.81285e-05
+Difference in eta:0
+OMP: Info #269: OMP_NESTED variable deprecated, please use OMP_MAX_ACTIVE_LEVELS instead.
+cp: overwrite 'N2_minus.hf.4states.no.cipsi.17200.scan.script.0.0075349824.EI.out'? Traceback (most recent call last):
+  File "/beegfs/jalberola/PHD/test_interface_2025/Spline-optimal-eta/TEST_17200/PYTHON_script/Eta_Gaussian_Regresion/Test_direct/newest_eta1/0.0/PROGRAM_bayesian_optimization_direct_test.py", line 9, in <module>
+    data = np.loadtxt('datafile.dat')
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/home/jalberola/.local/lib/python3.11/site-packages/numpy/lib/npyio.py", line 1373, in loadtxt
+    arr = _read(fname, dtype=dtype, comment=comment, delimiter=delimiter,
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/home/jalberola/.local/lib/python3.11/site-packages/numpy/lib/npyio.py", line 1016, in _read
+    arr = _load_from_filelike(
+          ^^^^^^^^^^^^^^^^^^^^
+ValueError: could not convert string '0.000,' to float64 at row 0, column 1.
+Difference in energy:3.81285e-05
+Difference in eta:0
+OMP: Info #269: OMP_NESTED variable deprecated, please use OMP_MAX_ACTIVE_LEVELS instead.
+cp: overwrite 'N2_minus.hf.4states.no.cipsi.17200.scan.script.0.0075349824.EI.out'? Traceback (most recent call last):
+  File "/beegfs/jalberola/PHD/test_interface_2025/Spline-optimal-eta/TEST_17200/PYTHON_script/Eta_Gaussian_Regresion/Test_direct/newest_eta1/0.0/PROGRAM_bayesian_optimization_direct_test.py", line 9, in <module>
+    data = np.loadtxt('datafile.dat')
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/home/jalberola/.local/lib/python3.11/site-packages/numpy/lib/npyio.py", line 1373, in loadtxt
+    arr = _read(fname, dtype=dtype, comment=comment, delimiter=delimiter,
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/home/jalberola/.local/lib/python3.11/site-packages/numpy/lib/npyio.py", line 1016, in _read
+    arr = _load_from_filelike(
+          ^^^^^^^^^^^^^^^^^^^^
+ValueError: could not convert string '0.000,' to float64 at row 0, column 1.
+Difference in energy:3.81285e-05
+Difference in eta:0

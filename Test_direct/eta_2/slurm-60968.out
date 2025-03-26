@@ -1,0 +1,38 @@
+bash: cannot set terminal process group (54663): Inappropriate ioctl for device
+bash: no job control in this shell
+Removing compiler version 2023.1.0
+Use `module list` to view any remaining dependent modules.
+  Load "debugger" to debug DPC++ applications with the gdb-oneapi debugger.
+  Load "dpl" for additional DPC++ APIs: https://github.com/oneapi-src/oneDPL
+Removing mkl version 2023.1.0
+Use `module list` to view any remaining dependent modules.
+
+
+    ,-----.     .-------.    .-'''-. .---.  .---.
+  .'  .-,  '.   \  _(`)_ \  / _     \|   |  |_ _|
+ / ,-.|  \ _ \  | (_ o._)| (`' )/`--'|   |  ( ' )
+;  \  '_ /  | : |  (_,_) /(_ o _).   |   '-(_{;}_)
+|  _`,/ \ _/  | |   '-.-'  (_,_). '. |      (_,_)
+: (  '\_/ \   ; |   |     .---.  \  :| _ _--.   |
+ \ `"/  \  )  \ |   |     \    `-'  ||( ' ) |   |
+  '. \_/``"/)  )/   )      \       / (_{;}_)|   |
+    '-----' `-' `---'       `-...-'  '(_,_) '---'
+
+
+
+   -- Quantum  Package  Shell --
+
+Loading compiler version 2023.1.0
+  Load "debugger" to debug DPC++ applications with the gdb-oneapi debugger.
+  Load "dpl" for additional DPC++ APIs: https://github.com/oneapi-src/oneDPL
+Loading mkl version 2023.1.0
+qp:  not found
+EZFIO directory not set: try 'ezfio set_file'
+EZFIO directory not set: try 'ezfio set_file'
+EZFIO directory not set: try 'ezfio set_file'
+EZFIO directory not set: try 'ezfio set_file'
+EZFIO directory not set: try 'ezfio set_file'
+EZFIO directory not set: try 'ezfio set_file'
+EZFIO directory not set: try 'ezfio set_file'
+Fatal error: exception Failure("Inconsistent command line")
+cp: overwrite '.scan.script.1st.out'? slurmstepd-cnzen3-1: error: *** JOB 60968 ON cnzen3-1 CANCELLED AT 2025-03-11T10:58:36 ***

@@ -1,0 +1,168 @@
+bash: cannot set terminal process group (101734): Inappropriate ioctl for device
+bash: no job control in this shell
+Removing compiler version 2023.1.0
+Use `module list` to view any remaining dependent modules.
+  Load "debugger" to debug DPC++ applications with the gdb-oneapi debugger.
+  Load "dpl" for additional DPC++ APIs: https://github.com/oneapi-src/oneDPL
+Removing mkl version 2023.1.0
+Use `module list` to view any remaining dependent modules.
+
+
+       ______        _____            ______   ____   ____
+   ___|\     \   ___|\    \       ___|\     \ |    | |    |
+  /    /\     \ |    |\    \     |    |\     \|    | |    |
+ /    /  |     ||    | |    |    |    |/____/||    |_|    |
+|    |   |     ||    |/____/| ___|    \|   | ||    .-.    |
+|\    \  |__   ||    ||    |||    \    \___|/ |    | |    |
+| \    \\`  \ /||    ||____|/|    |\     \    |    | |    |
+ \ \ ___\\   \ ||____|       |\ ___\|_____|   |____| |____|
+  \ |    ||___|/|    |       | |    |     |   |    | |    |
+   \|____||   | |____|        \|____|_____|   |____| |____|
+      \(  |___|   \(             \(    )/       \(     )/
+       '    )/     '              '    '         '     '
+            '
+
+
+   -- Quantum  Package  Shell --
+
+Loading compiler version 2023.1.0
+  Load "debugger" to debug DPC++ applications with the gdb-oneapi debugger.
+  Load "dpl" for additional DPC++ APIs: https://github.com/oneapi-src/oneDPL
+Loading mkl version 2023.1.0
+OMP: Info #269: OMP_NESTED variable deprecated, please use OMP_MAX_ACTIVE_LEVELS instead.
+cp: overwrite 'N2_minus.hf.4states.no.cipsi.17200.scan.script.1st.out'? reconstraining parameters rbf.variance
+reconstraining parameters rbf.lengthscale
+reconstraining parameters rbf.variance
+reconstraining parameters rbf.lengthscale
+ /nfs/home/jalberola/.local/lib/python3.11/site-packages/paramz/transformations.py:111: RuntimeWarning:divide by zero encountered in log
+Global minimum of LB acquisition at x = [0.00687936], value = 0.002037559521726816
+Global maximum of EI acquisition at x = [0.007182], value = 2.8295062302546056e-05
+OMP: Info #269: OMP_NESTED variable deprecated, please use OMP_MAX_ACTIVE_LEVELS instead.
+cp: overwrite 'N2_minus.hf.4states.no.cipsi.17200.scan.script.0.0068793553.LB.out'? reconstraining parameters rbf.variance
+reconstraining parameters rbf.lengthscale
+reconstraining parameters rbf.variance
+reconstraining parameters rbf.lengthscale
+ /beegfs/jalberola/PHD/test_interface_2025/Spline-optimal-eta/TEST_17200/PYTHON_script/Eta_Gaussian_Regresion/Test_direct/PROGRAM_bayesian_optimization_direct_test.py:53: RuntimeWarning:invalid value encountered in divide
+ /beegfs/jalberola/PHD/test_interface_2025/Spline-optimal-eta/TEST_17200/PYTHON_script/Eta_Gaussian_Regresion/Test_direct/PROGRAM_bayesian_optimization_direct_test.py:54: RuntimeWarning:invalid value encountered in divide
+ /nfs/home/jalberola/.local/lib/python3.11/site-packages/paramz/transformations.py:111: RuntimeWarning:divide by zero encountered in log
+Traceback (most recent call last):
+  File "/beegfs/jalberola/PHD/test_interface_2025/Spline-optimal-eta/TEST_17200/PYTHON_script/Eta_Gaussian_Regresion/Test_direct/PROGRAM_bayesian_optimization_direct_test.py", line 86, in <module>
+    L = cholesky(K + np.eye(len(X)) * 1e-6, lower=True)  # Add jitter for stability
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/home/jalberola/.local/lib/python3.11/site-packages/scipy/linalg/_decomp_cholesky.py", line 88, in cholesky
+    c, lower = _cholesky(a, lower=lower, overwrite_a=overwrite_a, clean=True,
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/home/jalberola/.local/lib/python3.11/site-packages/scipy/linalg/_decomp_cholesky.py", line 17, in _cholesky
+    a1 = asarray_chkfinite(a) if check_finite else asarray(a)
+         ^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/home/jalberola/.local/lib/python3.11/site-packages/numpy/lib/function_base.py", line 630, in asarray_chkfinite
+    raise ValueError(
+ValueError: array must not contain infs or NaNs
+OMP: Info #269: OMP_NESTED variable deprecated, please use OMP_MAX_ACTIVE_LEVELS instead.
+cp: overwrite 'N2_minus.hf.4states.no.cipsi.17200.scan.script.0.0068793553.LB.out'? reconstraining parameters rbf.variance
+reconstraining parameters rbf.lengthscale
+reconstraining parameters rbf.variance
+reconstraining parameters rbf.lengthscale
+ /beegfs/jalberola/PHD/test_interface_2025/Spline-optimal-eta/TEST_17200/PYTHON_script/Eta_Gaussian_Regresion/Test_direct/PROGRAM_bayesian_optimization_direct_test.py:53: RuntimeWarning:invalid value encountered in divide
+ /beegfs/jalberola/PHD/test_interface_2025/Spline-optimal-eta/TEST_17200/PYTHON_script/Eta_Gaussian_Regresion/Test_direct/PROGRAM_bayesian_optimization_direct_test.py:54: RuntimeWarning:invalid value encountered in divide
+ /nfs/home/jalberola/.local/lib/python3.11/site-packages/paramz/transformations.py:111: RuntimeWarning:divide by zero encountered in log
+Traceback (most recent call last):
+  File "/beegfs/jalberola/PHD/test_interface_2025/Spline-optimal-eta/TEST_17200/PYTHON_script/Eta_Gaussian_Regresion/Test_direct/PROGRAM_bayesian_optimization_direct_test.py", line 86, in <module>
+    L = cholesky(K + np.eye(len(X)) * 1e-6, lower=True)  # Add jitter for stability
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/home/jalberola/.local/lib/python3.11/site-packages/scipy/linalg/_decomp_cholesky.py", line 88, in cholesky
+    c, lower = _cholesky(a, lower=lower, overwrite_a=overwrite_a, clean=True,
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/home/jalberola/.local/lib/python3.11/site-packages/scipy/linalg/_decomp_cholesky.py", line 17, in _cholesky
+    a1 = asarray_chkfinite(a) if check_finite else asarray(a)
+         ^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/home/jalberola/.local/lib/python3.11/site-packages/numpy/lib/function_base.py", line 630, in asarray_chkfinite
+    raise ValueError(
+ValueError: array must not contain infs or NaNs
+OMP: Info #269: OMP_NESTED variable deprecated, please use OMP_MAX_ACTIVE_LEVELS instead.
+cp: overwrite 'N2_minus.hf.4states.no.cipsi.17200.scan.script.0.0068793553.LB.out'? reconstraining parameters rbf.variance
+reconstraining parameters rbf.lengthscale
+reconstraining parameters rbf.variance
+reconstraining parameters rbf.lengthscale
+ /beegfs/jalberola/PHD/test_interface_2025/Spline-optimal-eta/TEST_17200/PYTHON_script/Eta_Gaussian_Regresion/Test_direct/PROGRAM_bayesian_optimization_direct_test.py:53: RuntimeWarning:invalid value encountered in divide
+ /beegfs/jalberola/PHD/test_interface_2025/Spline-optimal-eta/TEST_17200/PYTHON_script/Eta_Gaussian_Regresion/Test_direct/PROGRAM_bayesian_optimization_direct_test.py:54: RuntimeWarning:invalid value encountered in divide
+ /nfs/home/jalberola/.local/lib/python3.11/site-packages/paramz/transformations.py:111: RuntimeWarning:divide by zero encountered in log
+Traceback (most recent call last):
+  File "/beegfs/jalberola/PHD/test_interface_2025/Spline-optimal-eta/TEST_17200/PYTHON_script/Eta_Gaussian_Regresion/Test_direct/PROGRAM_bayesian_optimization_direct_test.py", line 86, in <module>
+    L = cholesky(K + np.eye(len(X)) * 1e-6, lower=True)  # Add jitter for stability
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/home/jalberola/.local/lib/python3.11/site-packages/scipy/linalg/_decomp_cholesky.py", line 88, in cholesky
+    c, lower = _cholesky(a, lower=lower, overwrite_a=overwrite_a, clean=True,
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/home/jalberola/.local/lib/python3.11/site-packages/scipy/linalg/_decomp_cholesky.py", line 17, in _cholesky
+    a1 = asarray_chkfinite(a) if check_finite else asarray(a)
+         ^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/home/jalberola/.local/lib/python3.11/site-packages/numpy/lib/function_base.py", line 630, in asarray_chkfinite
+    raise ValueError(
+ValueError: array must not contain infs or NaNs
+OMP: Info #269: OMP_NESTED variable deprecated, please use OMP_MAX_ACTIVE_LEVELS instead.
+cp: overwrite 'N2_minus.hf.4states.no.cipsi.17200.scan.script.0.0068793553.LB.out'? reconstraining parameters rbf.variance
+reconstraining parameters rbf.lengthscale
+reconstraining parameters rbf.variance
+reconstraining parameters rbf.lengthscale
+ /beegfs/jalberola/PHD/test_interface_2025/Spline-optimal-eta/TEST_17200/PYTHON_script/Eta_Gaussian_Regresion/Test_direct/PROGRAM_bayesian_optimization_direct_test.py:53: RuntimeWarning:invalid value encountered in divide
+ /beegfs/jalberola/PHD/test_interface_2025/Spline-optimal-eta/TEST_17200/PYTHON_script/Eta_Gaussian_Regresion/Test_direct/PROGRAM_bayesian_optimization_direct_test.py:54: RuntimeWarning:invalid value encountered in divide
+ /nfs/home/jalberola/.local/lib/python3.11/site-packages/paramz/transformations.py:111: RuntimeWarning:divide by zero encountered in log
+Traceback (most recent call last):
+  File "/beegfs/jalberola/PHD/test_interface_2025/Spline-optimal-eta/TEST_17200/PYTHON_script/Eta_Gaussian_Regresion/Test_direct/PROGRAM_bayesian_optimization_direct_test.py", line 86, in <module>
+    L = cholesky(K + np.eye(len(X)) * 1e-6, lower=True)  # Add jitter for stability
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/home/jalberola/.local/lib/python3.11/site-packages/scipy/linalg/_decomp_cholesky.py", line 88, in cholesky
+    c, lower = _cholesky(a, lower=lower, overwrite_a=overwrite_a, clean=True,
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/home/jalberola/.local/lib/python3.11/site-packages/scipy/linalg/_decomp_cholesky.py", line 17, in _cholesky
+    a1 = asarray_chkfinite(a) if check_finite else asarray(a)
+         ^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/home/jalberola/.local/lib/python3.11/site-packages/numpy/lib/function_base.py", line 630, in asarray_chkfinite
+    raise ValueError(
+ValueError: array must not contain infs or NaNs
+OMP: Info #269: OMP_NESTED variable deprecated, please use OMP_MAX_ACTIVE_LEVELS instead.
+cp: overwrite 'N2_minus.hf.4states.no.cipsi.17200.scan.script.0.0068793553.LB.out'? reconstraining parameters rbf.variance
+reconstraining parameters rbf.lengthscale
+reconstraining parameters rbf.variance
+reconstraining parameters rbf.lengthscale
+ /beegfs/jalberola/PHD/test_interface_2025/Spline-optimal-eta/TEST_17200/PYTHON_script/Eta_Gaussian_Regresion/Test_direct/PROGRAM_bayesian_optimization_direct_test.py:53: RuntimeWarning:invalid value encountered in divide
+ /beegfs/jalberola/PHD/test_interface_2025/Spline-optimal-eta/TEST_17200/PYTHON_script/Eta_Gaussian_Regresion/Test_direct/PROGRAM_bayesian_optimization_direct_test.py:54: RuntimeWarning:invalid value encountered in divide
+ /nfs/home/jalberola/.local/lib/python3.11/site-packages/paramz/transformations.py:111: RuntimeWarning:divide by zero encountered in log
+Traceback (most recent call last):
+  File "/beegfs/jalberola/PHD/test_interface_2025/Spline-optimal-eta/TEST_17200/PYTHON_script/Eta_Gaussian_Regresion/Test_direct/PROGRAM_bayesian_optimization_direct_test.py", line 86, in <module>
+    L = cholesky(K + np.eye(len(X)) * 1e-6, lower=True)  # Add jitter for stability
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/home/jalberola/.local/lib/python3.11/site-packages/scipy/linalg/_decomp_cholesky.py", line 88, in cholesky
+    c, lower = _cholesky(a, lower=lower, overwrite_a=overwrite_a, clean=True,
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/home/jalberola/.local/lib/python3.11/site-packages/scipy/linalg/_decomp_cholesky.py", line 17, in _cholesky
+    a1 = asarray_chkfinite(a) if check_finite else asarray(a)
+         ^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/home/jalberola/.local/lib/python3.11/site-packages/numpy/lib/function_base.py", line 630, in asarray_chkfinite
+    raise ValueError(
+ValueError: array must not contain infs or NaNs
+OMP: Info #269: OMP_NESTED variable deprecated, please use OMP_MAX_ACTIVE_LEVELS instead.
+cp: overwrite 'N2_minus.hf.4states.no.cipsi.17200.scan.script.0.0068793553.LB.out'? reconstraining parameters rbf.variance
+reconstraining parameters rbf.lengthscale
+reconstraining parameters rbf.variance
+reconstraining parameters rbf.lengthscale
+ /beegfs/jalberola/PHD/test_interface_2025/Spline-optimal-eta/TEST_17200/PYTHON_script/Eta_Gaussian_Regresion/Test_direct/PROGRAM_bayesian_optimization_direct_test.py:53: RuntimeWarning:invalid value encountered in divide
+ /beegfs/jalberola/PHD/test_interface_2025/Spline-optimal-eta/TEST_17200/PYTHON_script/Eta_Gaussian_Regresion/Test_direct/PROGRAM_bayesian_optimization_direct_test.py:54: RuntimeWarning:invalid value encountered in divide
+ /nfs/home/jalberola/.local/lib/python3.11/site-packages/paramz/transformations.py:111: RuntimeWarning:divide by zero encountered in log
+Traceback (most recent call last):
+  File "/beegfs/jalberola/PHD/test_interface_2025/Spline-optimal-eta/TEST_17200/PYTHON_script/Eta_Gaussian_Regresion/Test_direct/PROGRAM_bayesian_optimization_direct_test.py", line 86, in <module>
+    L = cholesky(K + np.eye(len(X)) * 1e-6, lower=True)  # Add jitter for stability
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/home/jalberola/.local/lib/python3.11/site-packages/scipy/linalg/_decomp_cholesky.py", line 88, in cholesky
+    c, lower = _cholesky(a, lower=lower, overwrite_a=overwrite_a, clean=True,
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/home/jalberola/.local/lib/python3.11/site-packages/scipy/linalg/_decomp_cholesky.py", line 17, in _cholesky
+    a1 = asarray_chkfinite(a) if check_finite else asarray(a)
+         ^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/home/jalberola/.local/lib/python3.11/site-packages/numpy/lib/function_base.py", line 630, in asarray_chkfinite
+    raise ValueError(
+ValueError: array must not contain infs or NaNs
+OMP: Info #269: OMP_NESTED variable deprecated, please use OMP_MAX_ACTIVE_LEVELS instead.
+Thread 2 killed on uncaught exception Failure("Unable to bind the PUB socket to port : 49950 ")
+slurmstepd-cnzen3-8: error: *** JOB 60653 ON cnzen3-8 CANCELLED AT 2025-03-10T14:01:02 ***

@@ -1,0 +1,94 @@
+qp_run - Quantum Package command 
+
+Usage:
+  
+  qp_run [-h] [-p <string>] [-s] [--] PROGRAM EZFIO_DIR
+  
+Arguments:
+  
+  PROGRAM                Name of the QP program to be run 
+  EZFIO_DIR              EZFIO directory 
+  
+Options:
+  
+  -h  --help             Prints the help message. 
+  -p  --prefix=<string>  Prefix before running the program, like gdb 
+                         or valgrind. 
+  -s  --slave            Required to run slave tasks in distributed
+                         environments. 
+  
+Description:
+  
+  Executes a Quantum Package binary file among these: 
+  
+  * 
+  * attachement_orb 
+  * cap_fci 
+  * cas_based_density 
+  * cas_based_on_top 
+  * cas_complete 
+  * casscf 
+  * ccsd 
+  * ccsd_space_orb 
+  * ccsd_spin_orb 
+  * cipsi_orb_opt 
+  * cis 
+  * cisd 
+  * debug_gradient_list_opt 
+  * debug_gradient_opt 
+  * debug_hessian_list_opt 
+  * debug_hessian_opt 
+  * diagonalize_h 
+  * diagonalize_h_cap 
+  * example_casscf_multistate.sh 
+  * export_trexio 
+  * fci 
+  * fcidump 
+  * fcidump_pyscf 
+  * four_idx_transform 
+  * get_energy 
+  * hcore_guess 
+  * huckel_guess 
+  * import_integrals_ao_periodic 
+  * import_mo_coef_periodic 
+  * import_trexio_determinants 
+  * import_trexio_integrals 
+  * ks_scf 
+  * lccsd 
+  * molden 
+  * mp2 
+  * orb_opt 
+  * print_ci_vectors 
+  * print_detweights 
+  * print_dipole 
+  * print_energy 
+  * print_hamiltonian 
+  * print_mos 
+  * print_scf_int 
+  * print_sorted_wf_coef 
+  * print_var_energy 
+  * print_wf 
+  * print_wf_qp_edit 
+  * properties 
+  * pt2 
+  * rotate_mos 
+  * rs_ks_scf 
+  * save_natorb 
+  * save_natorb_no_ov_rot 
+  * save_natorb_no_ref 
+  * save_one_e_dm 
+  * save_ortho_mos 
+  * scf 
+  * sort_by_fock_energies 
+  * sort_wf 
+  * swap_mos 
+  * sym 
+  * test_2_rdm 
+  * test_chol 
+  * test_dav 
+  * test_dav_complex 
+  * test_proj_op 
+  * truncate_wf 
+  * write_integrals_erf 
+  
+  
